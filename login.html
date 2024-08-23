@@ -26,17 +26,17 @@
         <form id="form">
           <div class="m-3 right">
             <label>Usuario</label>
-            <input type="text" size="15" required>
+            <input type="text" size="15" id="login">
           </div>
           <div class="m-3 right">
-            <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" size="15" id="exampleInputPassword1">
+            <label for="Password">Contraseña</label>
+            <input type="password" size="15" id="password">
           </div>
           <div class="m-2">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Recordarme</label>
           </div>
-          <button type="submit" class="btn">INGRESAR</button>
+          <button type="submit" class="btn" id="button">INGRESAR</button>
         </form>
       </strong>
       
@@ -50,6 +50,11 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
+
+  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger">
+    <p>Los datos solicitados no fueron ingresados.</p>
+  </div>
+
   <script src="js/login.js"></script>
 </body>
 
