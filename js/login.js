@@ -11,10 +11,5 @@ document.getElementById("button").addEventListener("click", function() {
         showAlertError();
         return;
     }
-
-    else {
-        window.location.href = "index.html";
-
-    }
 }
 )
