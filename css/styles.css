@@ -192,3 +192,37 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.container1 {
+  background-color: rgb(240, 145, 0);
+  margin: 80px 500px 10px 500px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.right{
+  text-align: right;
+}
+
+
+#form {
+  color: #fff;
+  padding: 25px;    
+  }
+
+.btn {
+  color: rgb(240, 145, 0);
+  font-weight: bold;
+  background-color: rgb(248, 249, 250);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#is{
+  background-color: rgb(240, 145, 0);
+  text-align: center;
+  color: #fff;
+  margin: 70px 0px 0px 0px;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
