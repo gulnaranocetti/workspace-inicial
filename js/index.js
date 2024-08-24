@@ -12,3 +12,9 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+// Verificar si el usuario está logueado
+if (!localStorage.getItem("userLoggedIn")) {
+    // Si no está logueado, redirigir a login.html
+    window.location.href = "login.html";
+}
