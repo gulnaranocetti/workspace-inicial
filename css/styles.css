@@ -226,7 +226,3 @@ a.custom-card:hover {
   padding: 10px;
   font-family: 'Times New Roman', Times, serif;
 }
-
-#logout-button {
-  background-color: rgba(0, 0, 0, 0.5);
-}

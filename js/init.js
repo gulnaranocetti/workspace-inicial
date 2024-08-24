@@ -40,3 +40,11 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.getElementById("logout-button").addEventListener("click", function() {
+  localStorage.removeItem('userLoggedIn');
+  let storedValue = localStorage.getItem("userLoggedIn");
+  let logged = storedValue === 'true';
+  console.log(logged);
+  window.location.href = "login.html"
+})
