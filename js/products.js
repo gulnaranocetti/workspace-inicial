@@ -56,10 +56,11 @@ function showAutosList(){
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">${autos.name}</h4>
-                            <small class="text-muted">${autos.soldCount} artículos vendidos</small>
+                            <h4 class="mb-1">${autos.currency}${" "}${autos.cost}</h4>
                         </div>
                         <p class="mb-1">${autos.description}</p>
                     </div>
+                    <small class="text-muted right">${autos.soldCount} artículos vendidos</small>
                 </div>
             </div>
             `
