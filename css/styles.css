@@ -195,19 +195,20 @@ a.custom-card:hover {
 
 .container1 {
   background-color: rgb(240, 145, 0);
-  margin: 80px 500px 10px 500px;
+  margin: 5% 35% 10% 35%;
   border-radius: 50px;
   text-align: center;
 }
 
 .right{
   text-align: right;
+  margin-right: 25%;
 }
 
 
 #form {
   color: #fff;
-  padding: 25px;    
+  padding: 10%;    
   }
 
 .btn {
@@ -221,7 +222,7 @@ a.custom-card:hover {
   background-color: rgb(240, 145, 0);
   text-align: center;
   color: #fff;
-  margin: 70px 0px 0px 0px;
+  margin: 5% 0% 0% 0%;
   padding: 10px;
   font-family: 'Times New Roman', Times, serif;
 }
