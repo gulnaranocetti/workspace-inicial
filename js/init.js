@@ -41,10 +41,21 @@ let getJSONData = function(url){
     });
 }
 
+//funcion para cerrar sesion al clickear
 document.getElementById("logout-button").addEventListener("click", function() {
   localStorage.removeItem('userLoggedIn');
   let storedValue = localStorage.getItem("userLoggedIn");
   let logged = storedValue === 'true';
   console.log(logged);
   window.location.href = "login.html"
+})
+
+document.addEventListener("DOMContentLoaded", function(){
+  // Obtén el valor de localStorage y conviértelo a booleano
+  let storedValue = localStorage.getItem("userLoggedIn");
+  let logged = storedValue === 'true'; // Será true solo si storedValue es 'true'
+  console.log(logged);
+  if(!logged){
+      window.location.href = "login.html";
+  }
 })

@@ -15,7 +15,9 @@
 
 nav a {
   text-decoration: none;
+  cursor: pointer;
 }
+
 
 .bd-placeholder-img {
   font-size: 1.125rem;

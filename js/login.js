@@ -19,3 +19,10 @@ document.getElementById("button").addEventListener("click", function() {
     // Redirigir a la página principal
     window.location.href = "index.html";
 })
+
+document.addEventListener("DOMContentLoaded", function(){
+    // Obtén el valor de localStorage y conviértelo a booleano
+  let storedValue = localStorage.getItem("userLoggedIn");
+  let logged = storedValue === 'true'; // Será true solo si storedValue es 'true'
+  console.log(logged);
+})
