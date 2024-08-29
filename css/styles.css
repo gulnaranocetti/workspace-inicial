@@ -185,6 +185,11 @@ main {
   min-height: calc(100vh - 210px);
 }
 
+#login{
+  text-align: center;
+  background-color: white;
+}
+
 .m-2{
   color: white;
 }
@@ -232,5 +237,6 @@ a.custom-card:hover {
   color: #fff;
   margin: 5% 0% 0% 0%;
   padding: 10px;
+  font-size: 300%;
   font-family: 'Times New Roman', Times, serif;
 }
