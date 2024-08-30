@@ -201,17 +201,28 @@ main {
   min-height: calc(100vh - 210px);
 }
 
-#login{
-  text-align: center;
-  background-color: white;
+#containerl{
+  background-color: #fff;
+}
+
+#loginDiv{
+  margin: auto;
+  width: 100vw;
+  max-width: 500px;
+  min-width: 220px;
+}
+
+#imgLog{
+  width: 100%;
+  display: block;
+}
+
+.orange{
+background-color: orange;
 }
 
 .m-2{
   color: white;
-}
-
-.login {
-  background-color: orange;
 }
 
 a.custom-card,
