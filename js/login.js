@@ -2,8 +2,6 @@ function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
 }
 
-
-
 document.getElementById("button").addEventListener("click", function() {
     event.preventDefault();
     const usuario = document.getElementById("login").value.trim();
@@ -14,14 +12,14 @@ document.getElementById("button").addEventListener("click", function() {
         return;
     }
     
-    // Simular la autenticación correcta y guardar la sesión
     localStorage.setItem("userLoggedIn", true); // Guardar la sesión como iniciada 
+    
     // Redirigir a la página principal
     window.location.href = "index.html";
 })
 
 document.addEventListener("DOMContentLoaded", function(){
-    // Obtén el valor de localStorage y conviértelo a booleano
+    // Obtiene el valor de localStorage y conviértelo a booleano
   let storedValue = localStorage.getItem("userLoggedIn");
   let logged = storedValue === 'true'; // Será true solo si storedValue es 'true'
   console.log(logged);
