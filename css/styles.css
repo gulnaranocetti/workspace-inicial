@@ -185,25 +185,30 @@ main {
   min-height: calc(100vh - 210px);
 }
 
+#containerl{
+  background-color: #fff;
+}
+
 #login{
-  text-align: center;
-  background-color: white;
+  margin: auto;
   width: 100vw;
-  max-width: 2000px;
-  min-width: 320px;
+  max-width: 500px;
+  min-width: 220px;
 }
 
 #imgLog{
   width: 100%;
+  display: block;
+}
+
+.orange{
+background-color: orange;
 }
 
 .m-2{
   color: white;
 }
 
-body {
-  background-color: orange;
-}
 
 a.custom-card,
 a.custom-card:hover {
