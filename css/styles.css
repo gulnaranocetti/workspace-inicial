@@ -188,6 +188,13 @@ main {
 #login{
   text-align: center;
   background-color: white;
+  width: 100vw;
+  max-width: 2000px;
+  min-width: 320px;
+}
+
+#imgLog{
+  width: 100%;
 }
 
 .m-2{
