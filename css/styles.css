@@ -275,3 +275,10 @@ a.custom-card:hover {
       flex: 1 1 100%; 
   }
 }
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; 
+  padding: 16px;
+}
