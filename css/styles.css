@@ -190,10 +190,18 @@ main {
 }
 
 #login{
+<<<<<<< Updated upstream
   margin: auto;
   width: 100vw;
   max-width: 500px;
   min-width: 220px;
+=======
+  align-items: center;
+  background-color: white;
+  width: 100vw;
+  max-width: 500px;
+  min-width: 320px;
+>>>>>>> Stashed changes
 }
 
 #imgLog{
@@ -209,7 +217,10 @@ background-color: orange;
   color: white;
 }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 a.custom-card,
 a.custom-card:hover {
   color: inherit;
