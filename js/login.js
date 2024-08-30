@@ -4,7 +4,7 @@ function showAlertError() {
 
 document.getElementById("button").addEventListener("click", function() {
     event.preventDefault();
-    const usuario = document.getElementById("login").value.trim();
+    const usuario = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
     
     if (usuario === "" || password === "") {
