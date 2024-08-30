@@ -1,5 +1,7 @@
 .titulo-lista-productos {
   background-color: #a0cee64c;
+  margin-top: 0; /* Elimina el margen superior del contenedor */
+  padding-top: 0; /* Elimina el padding superior del contenedor */
 }
 
 .jumbotron,
@@ -47,12 +49,26 @@ nav a {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
+@media only screen and (max-width: 768px) { 
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
+    background: url('../img/login.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  } 
+} 
+
+@media only screen and (max-width: 568px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem; 
+    background: url('../img/login.png');
+    background-repeat: no-repeat;
+    background-size: 30rem;
+    background-position: center;
   }
-}
+} 
 
 .jumbotron p:last-child {
   margin-bottom: 0;
