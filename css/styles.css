@@ -185,6 +185,19 @@ main {
   min-height: calc(100vh - 210px);
 }
 
+#login{
+  text-align: center;
+  background-color: white;
+}
+
+.m-2{
+  color: white;
+}
+
+body {
+  background-color: orange;
+}
+
 a.custom-card,
 a.custom-card:hover {
   color: inherit;
@@ -196,20 +209,19 @@ a.custom-card:hover {
 }
 
 .container1 {
-  background-color: rgb(240, 145, 0);
   margin: 5% 35% 10% 35%;
   border-radius: 50px;
   text-align: center;
 }
 
 .right{
-  text-align: right;
+  text-align: center;
   margin-right: 25%;
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
 }
 
-
 #form {
-  color: #fff;
   padding: 10%;    
   }
 
@@ -221,10 +233,10 @@ a.custom-card:hover {
 }
 
 #is{
-  background-color: rgb(240, 145, 0);
   text-align: center;
   color: #fff;
   margin: 5% 0% 0% 0%;
   padding: 10px;
+  font-size: 300%;
   font-family: 'Times New Roman', Times, serif;
 }
