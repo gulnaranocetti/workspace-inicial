@@ -60,7 +60,60 @@ document.addEventListener("DOMContentLoaded", function(){
       window.location.href = "login.html";
   }
 });
-function cambiarTexto(){
-  let userName = document.getElementsByClassName('cambiar').innerHTML = getElementById('username').storedValue;
-}
+document.addEventListener("DOMContentLoaded", function() {
+  // Manejo de la visualización del nombre de usuario en la página principal
+  let storedValue = localStorage.getItem("userLoggedIn");
+  let logged = storedValue === 'true';
 
+  if (logged) {
+    // Mostrar el nombre del usuario y el botón de cerrar sesión
+    const userName = localStorage.getItem("userName");
+    const userNameElement = document.getElementById("user-name");
+    const logoutButtonElement = document.getElementById("logout-button");
+
+    if (userNameElement) {
+      userNameElement.textContent = userName; // Mostrar nombre de usuario
+      userNameElement.href = "#"; // Opcional: agregar un enlace al perfil del usuario
+    }
+
+    if (logoutButtonElement) {
+      logoutButtonElement.style.display = "inline"; // Mostrar botón de cerrar sesión
+      logoutButtonElement.addEventListener("click", function() {
+        // Eliminar información de inicio de sesión y redirigir al inicio de sesión
+        localStorage.removeItem("userLoggedIn");
+        localStorage.removeItem("userName");
+        window.location.href = "login.html";
+      });
+    }
+  } else {
+    // Si no está logueado, ocultar el nombre de usuario y el botón de cerrar sesión
+    const userNameElement = document.getElementById("user-name");
+    const logoutButtonElement = document.getElementById("logout-button");
+
+    if (userNameElement) {
+      userNameElement.textContent = "";
+    }
+
+    if (logoutButtonElement) {
+      logoutButtonElement.style.display = "none"; // Ocultar botón de cerrar sesión
+    }
+  }
+
+  // Configurar eventos para las tarjetas de categoría
+  const categories = ["autos", "juguetes", "muebles"];
+  categories.forEach(category => {
+    const element = document.getElementById(category);
+    if (element) {
+      element.addEventListener("click", function() {
+        const catID = {
+          autos: 101,
+          juguetes: 102,
+          muebles: 103
+        }[category];
+        localStorage.setItem("catID", catID);
+        window.location = "products.html";
+      });
+    }
+  });
+  
+});
