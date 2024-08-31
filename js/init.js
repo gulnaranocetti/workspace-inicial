@@ -48,14 +48,19 @@ document.getElementById("logout-button").addEventListener("click", function() {
   let logged = storedValue === 'true';
   console.log(logged);
   window.location.href = "login.html"
-})
+});
 
 document.addEventListener("DOMContentLoaded", function(){
   // Obtén el valor de localStorage y conviértelo a booleano
   let storedValue = localStorage.getItem("userLoggedIn");
+
   let logged = storedValue === 'true'; // Será true solo si storedValue es 'true'
   console.log(logged);
   if(!logged){
       window.location.href = "login.html";
   }
-})
+});
+function cambiarTexto(){
+  let userName = document.getElementsByClassName('cambiar').innerHTML = getElementById('username').storedValue;
+}
+
