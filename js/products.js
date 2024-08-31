@@ -50,17 +50,17 @@ function showAutosList(){
             htmlContentToAppend += `
             <div onclick="setAutoID(${autos.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <img src="${autos.image}" alt="${autos.description}" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${autos.name}</h4>
-                            <h4 class="mb-1">${autos.currency}${" "}${autos.cost}</h4>
+                            <h4 class="font-sm-size mb-1">${autos.name}</h4>
+                            <h4 class="font-sm-size mb-1">${autos.currency}${" "}${autos.cost}</h4>
                         </div>
-                        <p class="mb-1">${autos.description}</p>
+                        <p class="text-muted mb-1 col-8">${autos.description}</p>
+                        <small class="text-muted float-end">${autos.soldCount} artículos vendidos</small>
                     </div>
-                    <small class="text-muted right">${autos.soldCount} artículos vendidos</small>
                 </div>
             </div>
             `
