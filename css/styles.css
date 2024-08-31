@@ -56,6 +56,7 @@ nav a {
     background: url('../img/login.png');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 130%;
   } 
 } 
 
@@ -67,6 +68,10 @@ nav a {
     background-repeat: no-repeat;
     background-size: 30rem;
     background-position: center;
+  }
+
+  .font-sm-size{
+    font-size: 1.1rem;
   }
 } 
 
