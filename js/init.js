@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
       window.location.href = "login.html";
   }
 });
+
 document.addEventListener("DOMContentLoaded", function() {
   // Manejo de la visualización del nombre de usuario en la página principal
   let storedValue = localStorage.getItem("userLoggedIn");
