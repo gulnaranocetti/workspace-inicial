@@ -54,12 +54,12 @@ function showAutosList(){
                         <img src="${autos.image}" alt="${autos.description}" class="img-thumbnail">
                     </div>
                     <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="font-sm-size mb-1">${autos.name}</h4>
-                            <h4 class="font-sm-size mb-1">${autos.currency}${" "}${autos.cost}</h4>
+                        <div class="d-flex w-100 justify-content-between my-2">
+                            <h4 class="mb-md-1 font-sm-size font-sm-bold">${autos.name}</h4>
+                            <h4 class="mb-md-1 font-sm-size">${autos.currency}${" "}${autos.cost}</h4>
                         </div>
-                        <p class="text-muted mb-1 col-8">${autos.description}</p>
-                        <small class="text-muted float-end">${autos.soldCount} artículos vendidos</small>
+                        <p class="text-muted mb-1 col-8 font-sm-size">${autos.description}</p>
+                        <small class="text-muted float-end font-sm-size">${autos.soldCount} artículos vendidos</small>
                     </div>
                 </div>
             </div>

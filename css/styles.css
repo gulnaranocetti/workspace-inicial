@@ -71,7 +71,11 @@ nav a {
   }
 
   .font-sm-size{
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .font-sm-bold {
+    font-weight: 600;
   }
 } 
 
