@@ -61,15 +61,6 @@ nav a {
 } 
 
 @media only screen and (max-width: 568px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem; 
-    background: url('../img/login.png');
-    background-repeat: no-repeat;
-    background-size: 30rem;
-    background-position: center;
-  }
-
   .font-sm-size{
     font-size: 0.9rem;
   }

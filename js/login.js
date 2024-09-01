@@ -13,7 +13,7 @@ document.getElementById("button").addEventListener("click", function() {
     }
     
     localStorage.setItem("userLoggedIn", true); // Guardar la sesión como iniciada 
-    
+    localStorage.setItem("username", usuario);
     // Redirigir a la página principal
     window.location.href = "index.html";
 })
