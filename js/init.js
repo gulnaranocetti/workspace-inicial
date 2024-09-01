@@ -58,4 +58,15 @@ document.addEventListener("DOMContentLoaded", function(){
   if(!logged){
       window.location.href = "login.html";
   }
+
+  const userName = localStorage.getItem("username"); // Aquí deberías poner el nombre del usuario
+
+  // Selecciona el elemento del menú desplegable donde se mostrará el nombre del usuario
+  const userNameElement = document.getElementById("user-name");
+
+  // Establece el texto del elemento con el nombre del usuario
+  if (userNameElement) {
+    userNameElement.innerText = userName;
+  }
+  console.log(userName);
 })
