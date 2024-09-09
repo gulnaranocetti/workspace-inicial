@@ -257,3 +257,9 @@ a.custom-card:hover {
   font-size: 250%;
   font-family: 'Times New Roman', Times, serif;
 }
+
+.img-fluid{
+  margin: 10%;
+  padding: 10%;
+
+}
