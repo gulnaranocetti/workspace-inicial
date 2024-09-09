@@ -1,6 +1,6 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_COUNT = "Cant.";
+const ORDER_BY_PROD_COST = "Cost.";
 let currentAutosArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
@@ -21,7 +21,7 @@ function sortAutos(criteria, array){
             if ( a.name < b.name ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_COUNT){
+    }else if (criteria === ORDER_BY_PROD_COST){
         result = array.sort(function(a, b) {
             let aCount = parseInt(a.productCount);
             let bCount = parseInt(b.productCount);
@@ -44,8 +44,8 @@ function showAutosList(){
     for(let i = 0; i < currentAutosArray.length; i++){
         let autos = currentAutosArray[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(autos.soldCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(autos.soldCount) <= maxCount))){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(autos.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(autos.cost) <= maxCount))){
 
             htmlContentToAppend += `
             <div onclick="setAutoID(${autos.id})" class="list-group-item list-group-item-action cursor-active">
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("sortByCount").addEventListener("click", function(){
-        sortAndShowAutos(ORDER_BY_PROD_COUNT);
+        sortAndShowAutos(ORDER_BY_PROD_COST);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
@@ -121,8 +121,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por precio
+        //de cada productos.
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
