@@ -259,7 +259,34 @@ a.custom-card:hover {
 }
 
 .img-fluid{
-  margin: 10%;
-  padding: 10%;
+  margin: 5%;
+  padding: 0.5%;
+  max-width: 100%;
+  height: auto;
+}
 
+.row1{
+background-color: rgb(223, 220, 220);
+margin: 3%;
+align-items: center;
+display: flex; 
+justify-content: center;
+gap: 4%; 
+padding: 1%;
+}
+.container-product{
+  display: flex;
+  align-items:flex-start;
+  padding: 5%;
+  background-color: rgb(223, 220, 220);
+
+}
+.img-fluido{
+  max-width: 100%;
+  height: auto;
+  margin-top: 10%;
+}
+
+.content-text {
+  padding-top: 10%; /* Añadimos separación superior en pantallas pequeñas */
 }
