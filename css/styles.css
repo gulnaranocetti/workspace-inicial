@@ -278,7 +278,7 @@ padding: 1%;
 .img-fluido{
   max-width: 100%;
   height: auto;
-  margin-top: 30%;
+  margin-top: 20%;
 }
 
 .content-text {
@@ -291,4 +291,18 @@ padding: 1%;
 .text-center {
   text-decoration: underline;
   padding: 2%;
+}
+.container-custom {
+  max-width: 2000px;
+ }
+
+ .responsive-text {
+  font-size: clamp(0.5rem, 1.5rem, 2rem);
+  line-height: clamp(0.3, 0.4rem, 0.5); 
+ }
+ 
+ p {
+  font-size: clamp(0.5rem, 0.8rem, 1rem);
+  line-height: clamp(1, 0.5rem, 1);
+  margin-bottom: 0.5rem;
 }
