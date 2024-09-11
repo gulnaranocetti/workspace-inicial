@@ -306,3 +306,16 @@ padding: 1%;
   line-height: clamp(1, 0.5rem, 1);
   margin-bottom: 0.5rem;
 }
+
+.zoom {
+  transition: transform 0.3s ease;
+}
+.zoom:hover {
+  transform: scale(2.0); /* Ajusta el valor según el nivel de zoom que desees */
+  cursor: zoom-in;
+}
+
+.img-zoom-container {
+  position: relative;
+  display: inline-block;
+}
