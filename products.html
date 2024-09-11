@@ -46,8 +46,8 @@
   <main class="pb-5">
     <div class="jumbotron text-center"></div>
     <div class="text-center p-4 titulo-lista-productos">
-      <h2>Autos</h2>
-      <p class="lead">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
+      <h2></h2>
+      <p class="lead"></p>
     </div>
     <div class="container">
       <div class="row">
@@ -57,8 +57,8 @@
             <label class="btn btn-light" for="sortAsc">A-Z</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc">
             <label class="btn btn-light" for="sortDesc">Z-A</label>
-            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            <input type="radio" class="btn-check" name="options" id="sortByCost" checked>
+            <label class="btn btn-light" for="sortByCost"><i class="fas fa-sort-amount-down mr-1"></i></label>
           </div>
         </div>
       </div>
@@ -69,14 +69,14 @@
               <p class="font-weight-normal text-end my-2">Precio</p>
             </div>
             <div class="col-4 col-md-2 col-lg-2">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
             </div>
             <div class="col-4 col-md-2 col-lg-2">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
             </div>
             <div class="col-3 p-0 text-md-end text-lg-end text-start">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
                 <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="list-group" id="autos-list-container">
+        <div class="list-group" id="prod-list-container">
         </div>
       </div>
     </div>

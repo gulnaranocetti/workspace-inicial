@@ -1,12 +1,12 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COST = "Cost.";
-let currentAutosArray = [];
+let currentProdArray = [];
 let currentSortCriteria = undefined;
-let minCount = undefined;
-let maxCount = undefined;
+let minCost = undefined;
+let maxCost = undefined;
 
-function sortAutos(criteria, array){
+function sortProd(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
@@ -23,11 +23,11 @@ function sortAutos(criteria, array){
         });
     }else if (criteria === ORDER_BY_PROD_COST){
         result = array.sort(function(a, b) {
-            let aCount = parseInt(a.productCount);
-            let bCount = parseInt(b.productCount);
+            let aCost = parseInt(a.productCost);
+            let bCost = parseInt(b.productCost);
 
-            if ( aCount > bCount ){ return -1; }
-            if ( aCount < bCount ){ return 1; }
+            if ( aCost > bCost ){ return -1; }
+            if ( aCost < bCost ){ return 1; }
             return 0;
         });
     }
@@ -35,53 +35,54 @@ function sortAutos(criteria, array){
     return result;
 }
 
-function setAutoID(id) {
-    localStorage.setItem("autoID", id);
+function setcatID(id) {
+    localStorage.setItem("catID", id);
+    window.location = "product-info.html"
 }
 
-function showAutosList(){
+function showProdList(){
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentAutosArray.length; i++){
-        let autos = currentAutosArray[i];
+    for(let i = 0; i < currentProdArray.length; i++){
+        let prod = currentProdArray[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(autos.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(autos.cost) <= maxCount))){
+        if (((minCost == undefined) || (minCost != undefined && parseInt(prod.cost) >= minCost)) &&
+            ((maxCost == undefined) || (maxCost != undefined && parseInt(prod.cost) <= maxCost))){
 
             htmlContentToAppend += `
-            <div onclick="setAutoID(${autos.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setcatID(${prod.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12">
-                        <img src="${autos.image}" alt="${autos.description}" class="img-thumbnail">
+                        <img src="${prod.image}" alt="${prod.description}" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between my-2">
-                            <h4 class="mb-md-1 font-sm-size font-sm-bold">${autos.name}</h4>
-                            <h4 class="mb-md-1 font-sm-size">${autos.currency}${" "}${autos.cost}</h4>
+                            <h4 class="mb-md-1 font-sm-size font-sm-bold">${prod.name}</h4>
+                            <h4 class="mb-md-1 font-sm-size">${prod.currency}${" "}${prod.cost}</h4>
                         </div>
-                        <p class="text-muted mb-1 col-8 font-sm-size">${autos.description}</p>
-                        <small class="text-muted float-end font-sm-size">${autos.soldCount} artículos vendidos</small>
+                        <p class="text-muted mb-1 col-8 font-sm-size">${prod.description}</p>
+                        <small class="text-muted float-end font-sm-size">${prod.soldCount} artículos vendidos</small>
                     </div>
                 </div>
             </div>
             `
         }
 
-        document.getElementById("autos-list-container").innerHTML = htmlContentToAppend;
+        document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
 
-function sortAndShowAutos(sortCriteria, autosArray){
+function sortAndShowProd(sortCriteria, prodArray){
     currentSortCriteria = sortCriteria;
 
-    if(autosArray != undefined){
-        currentAutosArray = autosArray;
+    if(prodArray != undefined){
+        currentProdArray = prodArray;
     }
 
-    currentAutosArray = sortAutos(currentSortCriteria, currentAutosArray);
+    currentProdArray = sortProd(currentSortCriteria, currentProdArray);
 
-    //Muestro las categorías ordenadas
-    showAutosList();
+    //Muestro los productos ordenados
+    showProdList();
 }
 
 
@@ -89,57 +90,72 @@ function sortAndShowAutos(sortCriteria, autosArray){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(AUTOS_URL).then(function(resultObj){
-        if (resultObj.status === "ok"){
-            currentAutosArray = resultObj.data.products
+    let catID = localStorage.getItem("catID");
+    let productsURL = PRODUCTS_URL + catID + ".json";
 
-            showAutosList()
-            //sortAndShowAutos(ORDER_ASC_BY_NAME, resultObj.data);
+    // Llamada para obtener el nombre de la categoría desde el archivo JSON de categorías
+    getJSONData(CATEGORIES_URL).then(function(resultObj){
+        if (resultObj.status === "ok") {
+            let categoriesArray = resultObj.data;
+            let selectedCategory = categoriesArray.find(cat => cat.id == catID);
+
+            // Actualizamos el título y la descripción de acuerdo a la categoría seleccionada
+            document.querySelector(".titulo-lista-productos h2").innerText = selectedCategory.name;
+            document.querySelector(".titulo-lista-productos p").innerText = selectedCategory.description;
+        }
+    });
+
+    getJSONData(productsURL).then(function(resultObj){
+        if (resultObj.status === "ok"){
+            currentProdArray = resultObj.data.products
+
+            showProdList()
+            //sortAndShowProd(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowAutos(ORDER_ASC_BY_NAME);
+        sortAndShowProd(ORDER_ASC_BY_NAME);
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
-        sortAndShowAutos(ORDER_DESC_BY_NAME);
+        sortAndShowProd(ORDER_DESC_BY_NAME);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
-        sortAndShowAutos(ORDER_BY_PROD_COST);
+    document.getElementById("sortByCost").addEventListener("click", function(){
+        sortAndShowProd(ORDER_BY_PROD_COST);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
-        document.getElementById("rangeFilterCountMin").value = "";
-        document.getElementById("rangeFilterCountMax").value = "";
+        document.getElementById("rangeFilterCostMin").value = "";
+        document.getElementById("rangeFilterCostMax").value = "";
 
-        minCount = undefined;
-        maxCount = undefined;
+        minCost = undefined;
+        maxCost = undefined;
 
-        showAutosList();
+        showProdList();
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+    document.getElementById("rangeFilterCost").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por precio
         //de cada productos.
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
+        minCost = document.getElementById("rangeFilterCostMin").value;
+        maxCost = document.getElementById("rangeFilterCostMax").value;
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
-            minCount = parseInt(minCount);
+        if ((minCost != undefined) && (minCost != "") && (parseInt(minCost)) >= 0){
+            minCost = parseInt(minCost);
         }
         else{
-            minCount = undefined;
+            minCost = undefined;
         }
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
-            maxCount = parseInt(maxCount);
+        if ((maxCost != undefined) && (maxCost != "") && (parseInt(maxCost)) >= 0){
+            maxCost = parseInt(maxCost);
         }
         else{
-            maxCount = undefined;
+            maxCost = undefined;
         }
 
-        showAutosList();
+        showProdList();
     });
 });
