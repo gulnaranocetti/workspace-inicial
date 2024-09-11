@@ -37,6 +37,7 @@ function sortAutos(criteria, array){
 
 function setAutoID(id) {
     localStorage.setItem("autoID", id);
+     window.location = "product-info.html"
 }
 
 function showAutosList(){
