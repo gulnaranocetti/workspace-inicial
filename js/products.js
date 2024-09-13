@@ -35,9 +35,9 @@ function sortProd(criteria, array){
     return result;
 }
 
-function setAutoID(id) {
-    localStorage.setItem("autoID", id);
-     window.location = "product-info.html"
+function setcatID(id) {
+    localStorage.setItem("catID", id);
+    window.location = "product-info.html"
 }
 
 function showProdList(){
