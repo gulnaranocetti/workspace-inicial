@@ -259,7 +259,7 @@ a.custom-card:hover {
 }
 
 .img-fluid{
-  margin: 5%;
+  margin: 2%;
   padding: 0.5%;
   max-width: 100%;
   height: auto;
@@ -271,7 +271,7 @@ margin: 2%;
 align-items: center;
 display: flex; 
 justify-content: center;
-gap: 4%; 
+gap: 2%; 
 padding: 1%;
 }
 

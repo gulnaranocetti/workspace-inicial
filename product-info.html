@@ -44,52 +44,41 @@
   </nav>
   
   <main>
-      <div class="jumbotron mb-4 text-center">
-      </div>
-      <div class="container-custom">
-        <div class="row">
-          <div class="col-md-6 text-center">
-            <img src="img/car1.jpg" alt="car1" class="img-fluid">
-          </div>
-          <div class="col-md-6 content-text p-4 bg-light border">
-            <h2 class="text-center display-8">Chevrolet Onix Joy</h2>
-            <h4 class="text-right responsive-text">Características Principales:</h4>
-            
-            <!-- Aquí agregamos la descripción del producto -->
-            <h4 class="ProductDescription text-right responsive-text"></h4>
-    
-            <div class="row mt-4">
-              <div class="col-md-6 text-start">
-                <p class="vendidos">PRODUCTOS VENDIDOS:</p>
-              </div>
-              <div class="col-md-6 text-end">
-                <p class="productCost"><strong>Precio:</strong></p>
-              </div>
+    <div class="jumbotron mb-4 text-center">
+    </div>
+    <div class="container-custom">
+      <div class="row">
+        <!-- Contenedor para la imagen principal del producto -->
+        <div class="col-md-6 text-center">
+          <img id="mainProductImage" alt="Imagen del producto" class="img-fluid"> <!-- Cambiado para ser dinámico -->
+        </div>
+        <div class="col-md-6 content-text p-4 bg-light border">
+          <h2 class="text-center display-8">Chevrolet Onix Joy</h2>
+          <h4 class="text-right responsive-text">Características Principales:</h4>
+          
+          <!-- Aquí agregamos la descripción del producto -->
+          <h4 class="ProductDescription text-right responsive-text"></h4>
+  
+          <div class="row mt-4">
+            <div class="col-md-6 text-start">
+              <p class="vendidos">PRODUCTOS VENDIDOS:</p>
+            </div>
+            <div class="col-md-6 text-end">
+              <p class="productCost"><strong>Precio:</strong></p>
             </div>
           </div>
         </div>
-      </div>          
-
-  <div class="container-fluid.img bg-light border mt-5">
-    <div class="row row1">
-      <div class="col-2">
-        <img src="img/prod50921_1.jpg" class="img-fluid zoom" alt="car1">
       </div>
-      <div class="col-2">
-        <img src="img/prod50921_2.jpg" class="img-fluid zoom" alt="car1">
-      </div>
-      <div class="col-2">
-        <img src="img/prod50921_3.jpg" class="img-fluid zoom" alt="car1">
-      </div>
-      <div class="col-2">
-        <img src="img/prod50921_4.jpg" class="img-fluid zoom" alt="car1">
-      </div>
-      <div class="col-2">
-        <img src="img/prod50921_5.jpg" class="img-fluid zoom" alt="car1">
-      </div>
+    </div>          
+  
+    <!-- Contenedor para las imágenes dinámicas -->
+    <div class="container-fluid img bg-light border mt-5">
+      <div class="row row1 product-images"> <!-- Añadir esta clase para el contenedor -->
+        <!-- Aquí se agregarán dinámicamente las imágenes -->
       </div>
     </div>
   </main>
+  
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
