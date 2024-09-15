@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
         if (resultObj.status === "ok") {
             let selectedproducts = resultObj.data;
 
-            // Mostrar la categoría del producto
-            document.querySelector(".ProductCategory").innerText = Categoría: ${selectedproducts.category};
 
             // Actualizamos el título del producto
             document.querySelector(".text-center.display-8").innerText = selectedproducts.name;
@@ -24,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
             // Mostrar la descripción del producto
             document.querySelector(".ProductDescription").innerText = selectedproducts.description;
+
+            // Mostrar la categoría del producto
+            document.querySelector(".ProductCategory").innerText = selectedproducts.category;
 
             // Mostrar la imagen principal del producto
             const mainProductImage = document.getElementById("mainProductImage");
