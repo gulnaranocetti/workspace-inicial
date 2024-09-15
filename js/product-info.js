@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
         if (resultObj.status === "ok") {
             let selectedproducts = resultObj.data;
 
+            // Mostrar la categoría del producto
+            document.querySelector(".ProductCategory").innerText = Categoría: ${selectedproducts.category};
+
             // Actualizamos el título del producto
             document.querySelector(".text-center.display-8").innerText = selectedproducts.name;
             
