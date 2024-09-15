@@ -43,10 +43,10 @@ function setProductID(id) {  // Cambia 'setcatID' a 'setProductID'
     window.location = "product-info.html";  // Mantén la redirección
 }
 
-function showProdList(){
+function showProdList(prodArray = currentProdArray) {
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentProdArray.length; i++){
-        let prod = currentProdArray[i];
+    for(let i = 0; i < prodArray.length; i++){
+        let prod = prodArray[i];
 
         if (((minCost == undefined) || (minCost != undefined && parseInt(prod.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(prod.cost) <= maxCost))){
@@ -67,12 +67,13 @@ function showProdList(){
                     </div>
                 </div>
             </div>
-            `
+            `;
         }
-
-        document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
+
+    document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }
+
 
 
 function sortAndShowProd(sortCriteria, prodArray){
@@ -114,6 +115,27 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             showProdList()
         }
+//buscador
+//capturar el imput
+const searchButton = document.getElementById('searchButton');
+const searchInput = document.getElementById('searchInput');
+//traigo los elementos de: 
+
+searchInput.addEventListener('input', () => {
+    const searchText = searchInput.value.toLowerCase(); // paso todo a minúscula
+
+    // Filtrar los productos basados en el texto de búsqueda
+    let filteredProducts = currentProdArray.filter((product) => 
+        product.name.toLowerCase().includes(searchText) || 
+        product.description.toLowerCase().includes(searchText)
+    );
+
+    // Mostrar los productos filtrados
+    showProdList(filteredProducts);
+});
+
+            console.log(showProdList)
+          //aca termina mi buscador
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
@@ -160,4 +182,5 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showProdList();
     });
+
 });
