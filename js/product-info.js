@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             selectedproducts.images.forEach(image => {
                 let imgElement = document.createElement("img");
                 imgElement.src = image;
-                imgElement.className = "img-fluid zoom col-2";  // Clases de Bootstrap para estilo y diseño
+                imgElement.className = "img-fluid zoom col-2";
                 imageContainer.appendChild(imgElement);
             });
         }
