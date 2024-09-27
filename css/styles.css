@@ -319,3 +319,39 @@ padding: 1%;
   position: relative;
   display: inline-block;
 }
+
+h5{
+  font-size: 2.5em;
+  margin-bottom: 10px; /* Ajusta el espacio debajo del título */
+  font-weight: bold; /* Define el grosor de la fuente */
+}
+
+/* Estrellas */
+.clasificacion label {
+  color: grey;
+  font-size: 3.0em;
+}
+
+/* Escondemos los botones de radio */
+.clasificacion input[type="radio"] {
+  display: none;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  text-align: left;
+}
+
+.clasificacion label:hover {
+  color: orange;
+}
+
+.clasificacion label:hover ~ label {
+  color: orange;
+}
+
+.clasificacion input[type="radio"]:checked ~ label {
+  color: orange;
+}
+

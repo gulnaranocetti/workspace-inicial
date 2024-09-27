@@ -38,9 +38,9 @@ function sortProd(criteria, array){
     return result;
 }
 
-function setProductID(id) {  // Cambia 'setcatID' a 'setProductID'
-    localStorage.setItem("prodID", id);  // Cambia 'catID' a 'prodID'
-    window.location = "product-info.html";  // Mantén la redirección
+function setProductID(id) { 
+    localStorage.setItem("prodID", id); 
+    window.location = "product-info.html";  
 }
 
 function showProdList(prodArray = currentProdArray) {
