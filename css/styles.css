@@ -320,6 +320,12 @@ padding: 1%;
   display: inline-block;
 }
 
+h5{
+  font-size: 2.5em;
+  margin-bottom: 10px; /* Ajusta el espacio debajo del título */
+  font-weight: bold; /* Define el grosor de la fuente */
+}
+
 /* Estrellas */
 .clasificacion label {
   color: grey;
