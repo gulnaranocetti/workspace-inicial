@@ -334,7 +334,7 @@ padding: 1%;
 .clasificacion {
   direction: rtl;
   unicode-bidi: bidi-override;
-  text-align: center;
+  text-align: left;
 }
 
 .clasificacion label:hover {
