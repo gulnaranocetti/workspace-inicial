@@ -322,14 +322,25 @@ padding: 1%;
 
 h5{
   font-size: 2.5em;
-  margin-bottom: 10px; /* Ajusta el espacio debajo del título */
-  font-weight: bold; /* Define el grosor de la fuente */
+  margin-bottom: 10px; 
+  font-weight: bold; 
+}
+
+#exampleFormControlInput1{
+  width: 15%;
+  height: 15%;
+}
+
+#comment{
+  width: 50%;
+  height: 50%;
 }
 
 /* Estrellas */
 .clasificacion label {
   color: grey;
   font-size: 3.0em;
+  
 }
 
 /* Escondemos los botones de radio */
