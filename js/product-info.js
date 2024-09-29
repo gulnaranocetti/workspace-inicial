@@ -1,6 +1,41 @@
+let commentsArray = [];
+
+function showCommentsList(){
+    let htmlContentToAppend = "";
+    const maxStars = 5; // Número máximo de estrellas que se puede mostra
+
+    for(let i = 0; i < commentsArray.length; i++){
+        let comment = commentsArray[i];
+
+        // Generar estrellas llenas y vacías según el valor numberrange
+        let stars = "";
+        // Estrellas rellenas
+        for (let j = 0; j < comment.score; j++) {
+            stars += `<i class="bi bi-star-fill"></i>`; // Estrella rellena
+        }
+        // Estrellas vacías hasta completar el máximo
+        for (let j = comment.score; j < maxStars; j++) {
+            stars += `<i class="bi bi-star"></i>`; // Estrella vacía
+        }
+
+        htmlContentToAppend += `
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"> ${comment.user}</h5>
+                <p class="card-text">${comment.description}</p>
+                <div>${stars}</div>
+            </div>
+        </div>
+        `
+    }
+    document.getElementById("comments-list-container").innerHTML = htmlContentToAppend;
+}
+
 document.addEventListener("DOMContentLoaded", function(e) {
     let prodID = localStorage.getItem("prodID");
-    let productsURL = PRODUCT_INFO_URL + prodID + ".json";
+    let productsURL = PRODUCT_INFO_URL + prodID + EXT_TYPE;
+    let commentsURL = PRODUCT_INFO_COMMENTS_URL + prodID + EXT_TYPE;
+
     if (!prodID) {
         console.error("Product ID is not found in local storage.");
         return;
@@ -115,4 +150,11 @@ link.innerText = "Seleccionar Producto"; // Asigna un texto al botón
 
         }
     });
+
+    getJSONData(commentsURL).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+            commentsArray = resultObj.data;
+            showCommentsList();
+        }
+    })
 });
