@@ -320,23 +320,7 @@ padding: 1%;
   display: inline-block;
 }
 
-h5{
-  font-size: 1em;
-  margin-bottom: 10px; 
-  font-weight: bold; 
-  padding: 3em;
-  border: rgba(0, 0, 0, 0.5);
-}
 
-#exampleFormControlInput1{
-  width: 15%;
-  height: 15%;
-}
-
-#comment{
-  width: 50%;
-  height: 50%;
-}
 
 .clasificacion label {
   font-size: 30px; /* Tamaño de la estrella */

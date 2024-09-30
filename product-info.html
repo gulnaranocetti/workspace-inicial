@@ -91,13 +91,16 @@
     <div id="relatingProducts"></div>
     <!-- Pauta 3-Entrega 4 -->
      <form action="">
-      <h5>Calificar producto/h5>
+
+      <p class="fs-1 mb-2 fw-bold"> ¿Qué te pareció tu producto?</p>
+
     <div class="mb-3"> <!-- Nombre de usuario -->
       <label for="exampleFormControlInput1" class="form-label">Nombre de Usuario</label>
       <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="por ejemplo: Regina24">
     </div>
     <div> <!-- Estrellas -->
-      <p class="clasificacion">
+      <p class="fs-1 mb-2 fw-normal">Califica tu producto</p>
+      <div class="clasificacion">
         <input type="radio" id="radio1" class="estrella" name="estrellas" value="5" onclick="capturaValor(this)">
         <label for="radio1" style="cursor: pointer;">★</label>
     
@@ -112,17 +115,21 @@
         
         <input type="radio" id="radio5" class="estrella" name="estrellas" value="1" onclick="capturaValor(this)">
         <label for="radio5" style="cursor: pointer;">★</label>
-      </p>
-    </div>
-    <div class="mb-3"> <!-- Comentarios -->
-      <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
-      <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Agregar un comentario"></textarea>
-    </div>
-    <div>
-      <!-- Boton -->
-      <button type="button" class="btn btn-outline-warning mb-3" id="enviar">Enviar</button>
+      </div>
     </div>
 
+    <div class="d-flex flex-column align-items-end">
+      <!-- Comentarios -->
+      <div class="w-100">
+        <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
+        <textarea class="form-control mb-3" rows="5" id="comment" name="text" placeholder="Agregar un comentario"></textarea>
+      </div>
+  
+      <!-- Botón -->
+      <div>
+        <button type="button" class="btn btn-outline-warning mb-3" id="enviar">Enviar</button>
+      </div>
+    </div>
   </form>
 
     <div id="comments-list-container"></div>
