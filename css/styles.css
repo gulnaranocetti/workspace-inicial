@@ -322,12 +322,11 @@ padding: 1%;
 
 
 
-
-/* Estrellas */
 .clasificacion label {
-  color: grey;
-  font-size: 3.0em;
-  
+  font-size: 30px; /* Tamaño de la estrella */
+  color: white; /* Color de la estrella */
+  cursor: pointer;
+  text-shadow: 0 0 5px gold; /* Borde dorado */
 }
 
 /* Escondemos los botones de radio */
