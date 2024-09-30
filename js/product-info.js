@@ -18,7 +18,7 @@ function showCommentsList(){
             stars += `<i class="bi bi-star"></i>`; // Estrella vacía
         }
 
-        htmlContentToAppend += `
+       /* htmlContentToAppend += `
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title"> ${comment.user}</h5>
@@ -26,7 +26,20 @@ function showCommentsList(){
                 <div>${stars}</div>
             </div>
         </div>
-        `
+        `*/
+
+        htmlContentToAppend += `
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <img src="${comment.userImage}" alt="${comment.user}'s avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                    ${comment.user}
+                </h5>
+                <p class="card-text">${comment.description}</p>
+                <div>${stars}</div>
+            </div>
+        </div>
+        `;
     }
     document.getElementById("comments-list-container").innerHTML = htmlContentToAppend;
 }
