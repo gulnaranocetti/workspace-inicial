@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 imageContainer.appendChild(imgElement);
 
             });
-            const relatedImage = document.getElementById("relatingProducts");
+
+const relatedImage = document.getElementById("relatingProducts");
 
 // Asumiendo que `selectedproducts.relatedProducts` es un array
 const relatedProducts = selectedproducts.relatedProducts; 
@@ -60,16 +61,16 @@ row.className = "row"; // Clase para la fila
 relatedProducts.forEach(product => {
     // Crear un contenedor para la tarjeta
     const col = document.createElement("div");
-    col.className = "col-md-6"; // Clases para columnas (3 tarjetas por fila)
+    col.className = "col-md-6 d-flex justify-content-center"; // Clases para columnas (2 tarjetas por fila)
     
     const card = document.createElement("div");
     card.className = "card"; // Clase para la tarjeta
-    card.style.width = "60%"; // Ancho de la tarjeta al 100%
+    card.style.width = "70%"; // Ancho de la tarjeta al 100%
 
     // Crear el elemento de imagen
     const imgRelated = document.createElement("img");
     imgRelated.src = product.image; // Asignar la fuente de la imagen
-    imgRelated.className = "card-img-top"; // Clase para el estilo de imagen
+    imgRelated.className = "card-img-top "; // Clase para el estilo de imagen
     
     // Crear el cuerpo de la tarjeta
     const cardBody = document.createElement("div");
@@ -77,17 +78,12 @@ relatedProducts.forEach(product => {
 
     // Crear el título del producto
     const productName = document.createElement("h5");
-    productName.className = "card-title";
+    productName.className = "card-title small";
     productName.innerText = product.name; // Asignar el nombre del producto
-
-    // Añadir un evento de clic a la tarjeta
-    cardBody.addEventListener("click", () => {
-        updateProductInfo(product); // Llamar a la función para actualizar la información del producto
-    });
 
     const link = document.createElement("button");
     link.innerHTML= "Ver"
-    link.className="btn btn-primary"
+    link.className= "btn custom-btn"
 
     link.addEventListener("click", () => {
         localStorage.setItem("prodID", product.id);
@@ -98,9 +94,10 @@ relatedProducts.forEach(product => {
 
     // Agregar elementos al cuerpo de la tarjeta
     cardBody.appendChild(productName);
+    cardBody.appendChild(link);
     card.appendChild(imgRelated);
     card.appendChild(cardBody);
-    card.appendChild(link);
+    
     // Añadir la tarjeta a la columna
     col.appendChild(card);
     
@@ -111,10 +108,6 @@ relatedProducts.forEach(product => {
 // Añadir la fila al contenedor de productos relacionados
 relatedImage.appendChild(row);
 
-// Actualizar el título del producto principal
-document.querySelector(".card-title").innerText = selectedproducts.name;
-
-link.innerText = "Seleccionar Producto"; // Asigna un texto al botón
 
         }
     });
