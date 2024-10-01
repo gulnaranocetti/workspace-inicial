@@ -320,27 +320,13 @@ padding: 1%;
   display: inline-block;
 }
 
-h5{
-  font-size: 2.5em;
-  margin-bottom: 10px; 
-  font-weight: bold; 
-}
 
-#exampleFormControlInput1{
-  width: 15%;
-  height: 15%;
-}
 
-#comment{
-  width: 50%;
-  height: 50%;
-}
-
-/* Estrellas */
 .clasificacion label {
-  color: grey;
-  font-size: 3.0em;
-  
+  font-size: 30px; /* Tamaño de la estrella */
+  color: white; /* Color de la estrella */
+  cursor: pointer;
+  text-shadow: 0 0 5px gold; /* Borde dorado */
 }
 
 /* Escondemos los botones de radio */
