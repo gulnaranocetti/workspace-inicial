@@ -60,11 +60,11 @@ row.className = "row"; // Clase para la fila
 relatedProducts.forEach(product => {
     // Crear un contenedor para la tarjeta
     const col = document.createElement("div");
-    col.className = "col-md-4"; // Clases para columnas (3 tarjetas por fila)
+    col.className = "col-md-6"; // Clases para columnas (3 tarjetas por fila)
     
     const card = document.createElement("div");
     card.className = "card"; // Clase para la tarjeta
-    card.style.width = "100%"; // Ancho de la tarjeta al 100%
+    card.style.width = "60%"; // Ancho de la tarjeta al 100%
 
     // Crear el elemento de imagen
     const imgRelated = document.createElement("img");
@@ -87,13 +87,15 @@ relatedProducts.forEach(product => {
 
     const link = document.createElement("button");
     link.innerHTML= "Ver"
-     link.className="btn btn-primary"
+    link.className="btn btn-primary"
 
-        link.addEventListener("click", () => {
-            window.location.href = `products/${product.js}.json`; // Cambia a la ruta correcta
-        });
-   
-    
+    link.addEventListener("click", () => {
+        localStorage.setItem("prodID", product.id);
+        window.location = "product-info.html";
+    });
+     
+
+
     // Agregar elementos al cuerpo de la tarjeta
     cardBody.appendChild(productName);
     card.appendChild(imgRelated);
