@@ -352,3 +352,8 @@ padding: 1%;
   color: orange;
 }
 
+.custom-btn {
+  background-color: orange;
+  color: black;
+  width: 30%;
+}
