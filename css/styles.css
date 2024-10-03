@@ -320,16 +320,16 @@ padding: 1%;
   display: inline-block;
 }
 
-h5{
-  font-size: 2.5em;
-  margin-bottom: 10px; /* Ajusta el espacio debajo del título */
-  font-weight: bold; /* Define el grosor de la fuente */
+#exampleFormControlInput1 {
+  width: 20%;
 }
 
-/* Estrellas */
+/* estrellas */
 .clasificacion label {
-  color: grey;
-  font-size: 3.0em;
+  font-size: 30px; /* Tamaño de la estrella */
+  color: white; /* Color de la estrella */
+  cursor: pointer;
+  text-shadow: 0 0 5px gold; /* Borde dorado */
 }
 
 /* Escondemos los botones de radio */
@@ -353,5 +353,20 @@ h5{
 
 .clasificacion input[type="radio"]:checked ~ label {
   color: orange;
+}
+
+.custom-btn {
+  background-color: orange;
+  color: black;
+  width: 30%;
+}
+
+.bi-star-fill, .bi-star {
+  color: gold;
+}
+
+.dark {
+  background-color: gray;
+  color: #fff;
 }
 
