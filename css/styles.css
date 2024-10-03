@@ -360,3 +360,13 @@ padding: 1%;
   color: black;
   width: 30%;
 }
+
+.bi-star-fill, .bi-star {
+  color: gold;
+}
+
+.dark {
+  background-color: gray;
+  color: #fff;
+}
+

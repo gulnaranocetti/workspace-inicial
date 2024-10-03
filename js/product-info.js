@@ -107,7 +107,7 @@ relatedProducts.forEach(product => {
 // Añadir la fila al contenedor de productos relacionados
 relatedImage.appendChild(row);
 
-let commentsArray = [];
+
 
 function showCommentsList(){
     let htmlContentToAppend = "";
@@ -127,25 +127,12 @@ function showCommentsList(){
             stars += `<i class="bi bi-star"></i>`; // Estrella vacía
         }
 
-       /* htmlContentToAppend += `
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title"> ${comment.user}</h5>
-                <p class="card-text">${comment.description}</p>
-                <div>${stars}</div>
-            </div>
-        </div>
-        `*/
-
         htmlContentToAppend += `
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <img src="${comment.userImage}" alt="${comment.user}'s avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
-                    ${comment.user}
-                </h5>
-                <p class="card-text">${comment.description}</p>
-                <div>${stars}</div>
+        <div class="container card">
+            <div class="row dark">
+                <h6 class="col">${comment.user}</h6>
+                <p class="col">${comment.description}</p>
+                <div class="col">${stars}</div>
             </div>
         </div>
         `;
@@ -161,6 +148,9 @@ getJSONData(commentsURL).then(function(resultObj) {
         showCommentsList();
     }
 }) 
+
+
+
         }
     });
 });
