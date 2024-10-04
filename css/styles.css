@@ -320,10 +320,6 @@ padding: 1%;
   display: inline-block;
 }
 
-#exampleFormControlInput1 {
-  width: 20%;
-}
-
 /* estrellas */
 .clasificacion label {
   font-size: 30px; /* Tamaño de la estrella */
@@ -366,7 +362,7 @@ padding: 1%;
 }
 
 .dark {
-  background-color: gray;
+  background-color: rgba(63, 68, 74, 1);
   color: #fff;
 }
 
