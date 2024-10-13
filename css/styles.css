@@ -120,9 +120,15 @@ footer p {
 .alert {
   position: fixed;
   top: 80px;
-  width: 50%;
+  width: 90%;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.alert-danger {
+  color: #fff;
+  background-color: #000;
+  border-radius: 2em;
 }
 
 .lds-ring {
