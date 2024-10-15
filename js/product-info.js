@@ -118,6 +118,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     })       
 });
+ // Funcionalidad del switch
+    const switchElement = document.querySelector(".switch");
+ if (switchElement) {  // Verificar si existe el elemento .switch
+        switchElement.addEventListener("click", e => {
+        switchElement.classList.toggle("active");
+        document.body.classList.toggle("active");
+        });
+    }
+
 
 function showCommentsList(){
     let htmlContentToAppend = "";
@@ -178,3 +187,5 @@ document.getElementById("commentForm").addEventListener("submit", function(e) {
     document.getElementById("commentForm").reset();
     starRating = 0;
 });
+
+
