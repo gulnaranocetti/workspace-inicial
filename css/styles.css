@@ -422,6 +422,27 @@ padding: 1%;
   border: solid 2px #fff;
 }
 
-body.active  {
+body.active h2{
+background-color: #151e21;
+color: #cfcfcf;
+}
+body.active h4{
+  background-color: #151e21;
+  color: #cfcfcf;
+  }
 
+body.active {
+  background-color: #151e21;
+  color: #cfcfcf;
+  }
+
+body.active .container {
+  background-color: #151e21;
+    color: #cfcfcf;
+    border-color: #cfcfcf;
+}
+body.active .card-body{
+  background-color: #151e21;
+  color: #cfcfcf;
+  border-color: #cfcfcf;
 }
