@@ -35,6 +35,14 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+ // Funcionalidad del switch
+ const switchElement = document.querySelector(".switch");
+ if (switchElement) {  // Verificar si existe el elemento .switch
+ switchElement.addEventListener("click", e => {
+ switchElement.classList.toggle("active");
+ document.body.classList.toggle("active");
+ });
+}
 
 
 
