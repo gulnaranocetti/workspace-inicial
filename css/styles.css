@@ -118,7 +118,7 @@ footer p {
 }
 
 #welcome-message {
-  position: fixed;
+  position: flex;
   top: 80px;
   width: 90%;
   height: 3em;
