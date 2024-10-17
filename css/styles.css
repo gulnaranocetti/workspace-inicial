@@ -436,11 +436,7 @@ body.active {
   color: #cfcfcf;
   }
 
-body.active .container {
-  background-color: #151e21;
-    color: #cfcfcf;
-    border-color: #cfcfcf;
-}
+
 body.active .card-body{
   background-color: #151e21;
   color: #cfcfcf;
@@ -465,11 +461,6 @@ body.active .row1{
 
 }
 
-body.active .col{
-  background-color: #151e21;
-  color: #cfcfcf;
-}
-
 body.active .col-lg-3{
   background-color: #151e21;
   color: #cfcfcf;
@@ -480,16 +471,22 @@ body.active .img-thumbnail{
   color: #cfcfcf;
 }
 
-
-body.active .btn{
-  background-color: #151e21;
-}
-
 body.active .card{
   background-color: #151e21;
   color: #cfcfcf;
+  border-color: #cfcfcf;
+  ;
 }
 
 body.active .text-center{
+  background-color: #151e21;
+}
+
+/*body.active .container {
+  background-color: #151e21;
+    color: #cfcfcf;
+    border-color: #cfcfcf;
+}
+    body.active .btn{
   background-color: #151e21;
 }

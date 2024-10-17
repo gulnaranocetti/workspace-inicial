@@ -140,4 +140,12 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+    // Funcionalidad del switch
+    const switchElement = document.querySelector(".switch");
+    if (switchElement) {
+        switchElement.addEventListener("click", function () {
+            switchElement.classList.toggle("active");
+            document.body.classList.toggle("active");
+        });
+    }
 });
