@@ -1,23 +1,59 @@
-  document.addEventListener("DOMContentLoaded", function(){
-    // Obtén el valor de localStorage y conviértelo a booleano
-    let storedValue = localStorage.getItem("userLoggedIn");
-    let logged = storedValue === 'true'; // Será true solo si storedValue es 'true'
-    console.log(logged);
-    if(!logged){
-        window.location.href = "login.html";
-    }
-  
-    const userName = localStorage.getItem("username"); // Aquí obtiene el nombre del usuario
-  
-    // Selecciona el encabezado donde se mostrará el mensaje seguido del nombre de usuario
-    const userNameElement = document.getElementById("welcome-message");
-  
-    // Establece el texto del elemento con el nombre del usuario
-    if (userNameElement) {
-      userNameElement.innerText = `Bienvenido/a ${userName}!`;
+document.addEventListener("DOMContentLoaded", function () {
+  let storedValue = localStorage.getItem("userLoggedIn");
+  let logged = storedValue === 'true';
+  console.log(logged);
+  if (!logged) {
+    window.location.href = "login.html";
+  }
 
+  const userName = localStorage.getItem("username");
+
+  const userNameElement = document.getElementById("welcome-message");
+  const emailField = document.getElementById("email");
+  const campoNombre = document.getElementById("nombre");
+  const campoSegNomb = document.getElementById("seg-nombre");
+  const campoApellido = document.getElementById("apellido");
+  const campoSegApell = document.getElementById("seg-apellido");
+  const campoContato = document.getElementById("contacto");
+
+
+  if (userNameElement) {
+    userNameElement.innerText = `Bienvenido/a ${userName}!`;
+  }
+  console.log(userName);
+
+  function cargarValorDesdeLocalStorage(campo, clave) {
+    if (campo) {
+      campo.value = localStorage.getItem(clave) || '';
     }
-    console.log(userName);
+  }
+
+  cargarValorDesdeLocalStorage(emailField, "username")
+  cargarValorDesdeLocalStorage(campoNombre, "name");
+  cargarValorDesdeLocalStorage(campoSegNomb,"sec-name")
+  cargarValorDesdeLocalStorage(campoApellido, "surname");
+  cargarValorDesdeLocalStorage(campoSegApell, "sec-surname")
+  cargarValorDesdeLocalStorage(campoContato, "contact")
+
+
+  document.getElementById('saveButton').addEventListener('click', function () {
+
+    if (campoNombre === '' || campoApellido === '' || emailField === '') {
+      alert('Todos los campos marcados con * son obligatorios.');
+      return;
+    }
+
+    localStorage.setItem("name", campoNombre.value);
+    localStorage.setItem("sec-name", campoSegNomb.value);
+    localStorage.setItem("surname", campoApellido.value);
+    localStorage.setItem("sec-surname", campoSegApell.value);
+    localStorage.setItem("contact", campoContato.value);
+
+    alert('Datos guardados correctamente');
+
+
   })
 
-  const emailFromLogin = localStorage.getItem("username");
+
+
+})
