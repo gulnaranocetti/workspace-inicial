@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
           // Si no se ha cambiado la imagen, solo guardar el resto de los datos
           localStorage.setItem(userName, JSON.stringify(userData));
         }
-        alert('Datos guardados correctamente');
       } else {
         event.preventDefault(); // Prevenir el guardado si no es válido
         form.classList.add('was-validated'); // Activar los estilos de validación
