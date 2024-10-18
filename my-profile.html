@@ -67,11 +67,59 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div id="welcome-message" class="my-4" role="alert">
-        <header class="welcome"></header>
-      </div>
+
+    <div id="welcome-message" class="my-4 container"></div>
+
+    <div class="col-2" id="img-profile">
+      <img src="img/profile.jpg" alt="profile" class="img-thumbnail ">
     </div>
+    
+    <div class="container-sm mt-4 col-8">
+      <form>
+        <div class="form-group row p-2">
+          <label for="nombre" class="col-sm-4 col-form-label text-right">&#42; Nombre:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
+          </div>
+        </div>
+        <div class="form-group row p-2">
+          <label for="seg-nombre" class="col-sm-4 col-form-label text-right">Segundo nombre:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="seg-nombre" placeholder="Ingrese su segundo nombre">
+          </div>
+        </div>
+        <div class="form-group row p-2">
+          <label for="apellido" class="col-sm-4 col-form-label text-right">&#42; Apellido:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido" required>
+          </div>
+        </div>
+        <div class="form-group row p-2">
+          <label for="seg-apellido" class="col-sm-4 col-form-label text-right">Segundo apellido:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="seg-apellido" placeholder="Ingrese su segundo apellido">
+          </div>
+        </div>
+        <div class="form-group row p-2">
+          <label for="email" class="col-sm-4 col-form-label text-right">&#42; Email:</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required>
+          </div>
+        </div>
+        <div class="form-group row p-2">
+          <label for="contacto" class="col-sm-4 col-form-label text-right">Teléfono de contato:</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control" id="contacto" placeholder="Ingrese su número de contacto" required>
+          </div>
+        </div>
+        <div class="form-group row p-2">
+          <div class="col-sm-8 offset-sm-4">
+            <button type="submit" class="btn btn-primary" id="saveButton">Guardar cambios</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -84,6 +132,6 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
-</body>
-
-</html>
+  </body>
+  
+  </html>

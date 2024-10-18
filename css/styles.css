@@ -117,15 +117,6 @@ footer p {
   max-height: 100%;
 }
 
-#welcome-message {
-  position: flex;
-  top: 80px;
-  width: 90%;
-  height: 3em;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-
 .my-4 {
   color: #fff;
   background-color: #000;
@@ -133,7 +124,6 @@ footer p {
   padding: 1.2rem;
   text-align: center;
   font-size: xx-large;
-  letter-spacing: 0.5rem;
 }
 
 .lds-ring {
@@ -375,6 +365,25 @@ padding: 1%;
 .dark {
   background-color: rgba(63, 68, 74, 1);
   color: #fff;
+}
+
+
+.full-height {
+  height: 100%; /* Clase para ocupar toda la altura */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.text-right{
+  text-align: right;
+  font-size: large;
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+#img-profile {
+  float: left;
+  padding-left: 6%;
 }
 
 /*ESTILOS DE SWITCH*/
