@@ -482,11 +482,8 @@ body.active .text-center{
   background-color: #151e21;
 }
 
-/*body.active .container {
+body.active .list-group-item {
   background-color: #151e21;
     color: #cfcfcf;
     border-color: #cfcfcf;
-}
-    body.active .btn{
-  background-color: #151e21;
 }

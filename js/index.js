@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (logged) {
       const userName = localStorage.getItem("userName");
       document.getElementById("user-name").textContent = userName;
-   
+  
       
       document.getElementById("logout-button").style.display = "block"; 
       document.getElementById("logout-button").addEventListener("click", function() {
@@ -35,14 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
- // Funcionalidad del switch
- const switchElement = document.querySelector(".switch");
- if (switchElement) {  // Verificar si existe el elemento .switch
- switchElement.addEventListener("click", e => {
- switchElement.classList.toggle("active");
- document.body.classList.toggle("active");
- });
-}
 
 
 
