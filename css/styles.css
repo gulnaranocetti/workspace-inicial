@@ -498,6 +498,6 @@ body.active .list-group-item {
     border-color: #cfcfcf;
 }
 
-body.active .my-4{
+body.active #welcome-message{
   background-color: #151e21 !important;
 }
