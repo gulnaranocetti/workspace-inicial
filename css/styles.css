@@ -383,7 +383,10 @@ padding: 1%;
 
 #img-profile {
   float: left;
-  padding-left: 6%;
+  background-color: #212529;
+  border: #212529;
+  border-color: #212529;
+  border-radius: 1px;
 }
 
 /*ESTILOS DE SWITCH*/
