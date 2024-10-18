@@ -497,3 +497,7 @@ body.active .list-group-item {
     color: #cfcfcf;
     border-color: #cfcfcf;
 }
+
+body.active .my-4{
+  background-color: #151e21;
+}
