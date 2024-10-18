@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const campoApellido = document.getElementById("apellido");
   const campoSegApell = document.getElementById("seg-apellido");
   const campoContato = document.getElementById("contacto");
+  const imgProfile = document.getElementById("img-profile").querySelector("img"); // Imagen de perfil
+  const fileInput = document.getElementById("profile-image-input"); // Input para subir la imagen
 
   if (userNameElement) {
     userNameElement.innerText = `Bienvenido/a ${userName}!`;
@@ -32,7 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
       campoSegApell.value = userData.secSurname || '';
       campoContato.value = userData.contact || '';
       emailField.value = userData.email || ''; // El email es el nombre de usuario
-      user.value = userData.username || '';
+      user.value = userName;
+      // Mostrar la imagen de perfil si está almacenada
+      if (userData.profileImage) {
+        imgProfile.src = userData.profileImage;
+      }
     } else {
       // Si no hay datos guardados, dejar los campos vacíos
       campoNombre.value = '';
@@ -56,10 +62,28 @@ document.addEventListener("DOMContentLoaded", function () {
       secName: campoSegNomb.value,
       surname: campoApellido.value,
       secSurname: campoSegApell.value,
-      contact: campoContato.value
+      contact: campoContato.value,
+      username: userName.value,
+      email: emailField.value
     };
 
-    localStorage.setItem(userName, JSON.stringify(userData)); // Guardar los datos del usuario en localStorage
+        // Verificar si se ha seleccionado una imagen de perfil
+        if (fileInput.files.length > 0) {
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const base64Image = e.target.result;
+            userData.profileImage = base64Image; // Guardar la imagen en base64
+            imgProfile.src = base64Image; // Mostrar la imagen de perfil en tiempo real
+            localStorage.setItem(userName, JSON.stringify(userData)); // Guardar todos los datos en localStorage
+          };
+          reader.readAsDataURL(file); // Convertir la imagen a base64
+        } else {
+          // Si no se ha cambiado la imagen, solo guardar el resto de los datos
+          localStorage.setItem(userName, JSON.stringify(userData));
+        }
+    
+        alert("Datos guardados correctamente.");
+      });
 
   });
-});
