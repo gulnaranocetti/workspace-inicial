@@ -377,3 +377,15 @@ padding: 1%;
   color: #fff;
 }
 
+.full-height {
+  height: 100%; /* Clase para ocupar toda la altura */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.text-right{
+  text-align: right;
+  font-size: large;
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
