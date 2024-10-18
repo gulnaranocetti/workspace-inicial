@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (logged) {
       const userName = localStorage.getItem("userName");
       document.getElementById("user-name").textContent = userName;
-   
+  
       
       document.getElementById("logout-button").style.display = "block"; 
       document.getElementById("logout-button").addEventListener("click", function() {
