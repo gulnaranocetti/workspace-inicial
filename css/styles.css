@@ -499,5 +499,5 @@ body.active .list-group-item {
 }
 
 body.active .my-4{
-  background-color: #151e21;
+  background-color: #151e21 !important;
 }
