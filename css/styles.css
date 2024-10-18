@@ -117,7 +117,6 @@ footer p {
   max-height: 100%;
 }
 
-
 .my-4 {
   color: #fff;
   background-color: #000;
@@ -368,6 +367,7 @@ padding: 1%;
   color: #fff;
 }
 
+
 .full-height {
   height: 100%; /* Clase para ocupar toda la altura */
   display: flex;
@@ -384,4 +384,115 @@ padding: 1%;
 #img-profile {
   float: left;
   padding-left: 6%;
+}
+
+/*ESTILOS DE SWITCH*/
+.switch{
+  width:60px;
+  height: 30px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 100px;
+  border:rgb(255, 255, 255) solid 2px;
+  background-color: #212529;
+}
+
+.switch i {
+  font-size: 1rem;
+  color: #fdc21c;
+}
+.navbar-nav li:last-child::before {
+  content: "";
+  position: absolute;
+  height: 25px; 
+  width: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: solid thin #000;
+  left: 0;
+  right: unset;
+}
+
+.navbar-nav li:last-child.active::before {
+  right: 0;
+  left: unset;
+  border: solid thin #fff;
+}
+
+.navbar-nav li:last-child.active i:first-child {
+  color: #fff;
+}
+
+.navbar-nav li:last-child.active {
+  background-color: #f2c23f;
+  border: solid 2px #fff;
+}
+
+body.active h2{
+background-color: #151e21;
+color: #cfcfcf;
+}
+body.active h4{
+  background-color: #151e21;
+  color: #cfcfcf;
+  }
+
+body.active {
+  background-color: #151e21;
+  color: #cfcfcf;
+  }
+
+
+body.active .card-body{
+  background-color: #151e21;
+  color: #cfcfcf;
+  border-color: #cfcfcf;
+}
+
+body.active .col-md-6{
+  background-color: #151e21;
+  color: #cfcfcf;
+
+}
+
+body.active .bg-light {
+  background-color: #151e21 !important;
+  color: #fff !important;
+
+}
+
+body.active .row1{
+  background-color: #151e21;
+  color: #cfcfcf;
+
+}
+
+body.active .col-lg-3{
+  background-color: #151e21;
+  color: #cfcfcf;
+}
+
+body.active .img-thumbnail{
+  background-color: #151e21;
+  color: #cfcfcf;
+}
+
+body.active .card{
+  background-color: #151e21;
+  color: #cfcfcf;
+  border-color: #cfcfcf;
+  ;
+}
+
+body.active .text-center{
+  background-color: #151e21;
+}
+
+body.active .list-group-item {
+  background-color: #151e21;
+    color: #cfcfcf;
+    border-color: #cfcfcf;
 }
