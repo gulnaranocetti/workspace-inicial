@@ -117,14 +117,6 @@ footer p {
   max-height: 100%;
 }
 
-#welcome-message {
-  position: fixed;
-  top: 80px;
-  width: 90%;
-  height: 3em;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
 
 .my-4 {
   color: #fff;
@@ -133,7 +125,6 @@ footer p {
   padding: 1.2rem;
   text-align: center;
   font-size: xx-large;
-  letter-spacing: 0.5rem;
 }
 
 .lds-ring {
@@ -388,4 +379,9 @@ padding: 1%;
   text-align: right;
   font-size: large;
   font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+#img-profile {
+  float: left;
+  padding-left: 6%;
 }
