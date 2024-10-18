@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -34,12 +35,20 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               <span id="user-name"></span>
-          </a>
+            </a>
+          </li>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#"></a></li>
             <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
             <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
             <li><a class="dropdown-item" href="#" id="logout-button">Cerrar sesión</a></li>  
+          </ul>
+          <!-- comienza boton darkmode-->
+          <li class="switch"> 
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-moon"></i>
+          </li>
+          <!--termina boton darkmode-->
         </ul>
       </div>
     </div>
@@ -50,7 +59,7 @@
     </div>
     <div class="container-custom">
       <div class="row">
-         <!-- Contenedor para la categoría del producto -->
+        <!-- Contenedor para la categoría del producto -->
     <div class="row">
       <div class="col-12 text-center">
         <h2 class="ProductCategory p-2 border border-secondary rounded">Categoría</h2> 

@@ -68,4 +68,32 @@ document.addEventListener("DOMContentLoaded", function(){
     userNameElement.innerText = userName;
   }
   console.log(userName);
+
+       // Funcionalidad de modo oscuro
+      const switchElement = document.querySelector(".switch");
+
+      switchElement.addEventListener("click", function() {
+      toggleDarkMode();
+      });
+      
+          function toggleDarkMode() {
+              switchElement.classList.toggle("active");
+                  document.body.classList.toggle("active");
+              guardarModoOscuroEnLS(switchElement.classList.contains("active"));
+          }
+      
+          function guardarModoOscuroEnLS(estado) {
+              localStorage.setItem("darkMode", estado);
+          }
+      
+          function mantenerModoOscuroEnLS() {
+              const modoOscuroGuardado = localStorage.getItem("darkMode") === "true";
+                  if (modoOscuroGuardado) {
+              switchElement.classList.add("active");
+          document.body.classList.add("active");
+      }
+    }
+      
+        // Mantener el estado del modo oscuro al cargar la página
+          mantenerModoOscuroEnLS();
 })

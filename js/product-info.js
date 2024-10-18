@@ -178,3 +178,5 @@ document.getElementById("commentForm").addEventListener("submit", function(e) {
     document.getElementById("commentForm").reset();
     starRating = 0;
 });
+
+

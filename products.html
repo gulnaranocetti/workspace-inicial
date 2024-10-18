@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -40,9 +41,17 @@
             <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
             <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
             <li><a class="dropdown-item" href="#" id="logout-button">Cerrar sesión</a></li>  
+          </ul>
+          <!-- comienza boton darkmode-->
+          <li class="switch"> 
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-moon"></i>
+          </li>
+          <!--termina boton darkmode-->
         </ul>
       </div>
     </div>
+  </nav>
   </nav>
 
   <main class="pb-5">
@@ -93,7 +102,7 @@
             <div class="col-3 p-0 text-md-end text-lg-end text-start">
               <div class="btn-group" role="group">
                 <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn btn-light btn-sm" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
           </div>
