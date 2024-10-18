@@ -117,16 +117,15 @@ footer p {
   max-height: 100%;
 }
 
-#welcome-message {
+ #welcome-message {
   position: fixed;
   top: 80px;
   width: 90%;
   height: 3em;
   left: 50%;
   transform: translate(-50%, 0);
-}
-
-.my-4 {
+} 
+.welcome {
   color: #fff;
   background-color: #000;
   border-radius: 2em;
