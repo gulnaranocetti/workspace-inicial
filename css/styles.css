@@ -387,6 +387,7 @@ padding: 1%;
 }
 
 /*ESTILOS DE SWITCH*/
+
 .switch{
   width:60px;
   height: 30px;
@@ -404,7 +405,7 @@ padding: 1%;
   font-size: 1rem;
   color: #fdc21c;
 }
-.navbar-nav li:last-child::before {
+.darkM li:last-child::before {
   content: "";
   position: absolute;
   height: 25px; 
@@ -416,17 +417,17 @@ padding: 1%;
   right: unset;
 }
 
-.navbar-nav li:last-child.active::before {
+.darkM li:last-child.active::before {
   right: 0;
   left: unset;
   border: solid thin #fff;
 }
 
-.navbar-nav li:last-child.active i:first-child {
+.darkM li:last-child.active i:first-child {
   color: #fff;
 }
 
-.navbar-nav li:last-child.active {
+.darkM li:last-child.active {
   background-color: #f2c23f;
   border: solid 2px #fff;
 }
