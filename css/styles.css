@@ -502,5 +502,9 @@ body.active .list-group-item {
 }
 
 body.active #welcome-message{
-  background-color: #151e21 !important;
+  background-color: #212529 !important;
+}
+
+.rounded-circle {
+  padding: 15px;
 }
