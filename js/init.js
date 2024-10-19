@@ -79,21 +79,21 @@ document.addEventListener("DOMContentLoaded", function(){
           function toggleDarkMode() {
               switchElement.classList.toggle("active");
                   document.body.classList.toggle("active");
-              guardarModoOscuroEnLS(switchElement.classList.contains("active"));
+              saveDarkModeInLS(switchElement.classList.contains("active"));
           }
       
-          function guardarModoOscuroEnLS(estado) {
+          function saveDarkModeInLS(estado) {
               localStorage.setItem("darkMode", estado);
           }
       
-          function mantenerModoOscuroEnLS() {
-              const modoOscuroGuardado = localStorage.getItem("darkMode") === "true";
-                  if (modoOscuroGuardado) {
+          function keepDarkModeInLS() {
+              const savedDarkMode = localStorage.getItem("darkMode") === "true";
+                  if (savedDarkMode) {
               switchElement.classList.add("active");
           document.body.classList.add("active");
       }
     }
       
         // Mantener el estado del modo oscuro al cargar la página
-          mantenerModoOscuroEnLS();
+          keepDarkModeInLS();
 })
