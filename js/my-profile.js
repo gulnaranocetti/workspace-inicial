@@ -53,37 +53,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
   cargarDatosUsuario(); // Cargar los datos al cargar la página
 
+  // Validación del formulario con Bootstrap
+(() => {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+      
+    })
+  
+  })()
+
   // Guardar los datos del usuario en localStorage
   document.getElementById('saveButton').addEventListener('click', function () {
-
-
-    const userData = {
-      name: campoNombre.value,
-      secName: campoSegNomb.value,
-      surname: campoApellido.value,
-      secSurname: campoSegApell.value,
-      contact: campoContato.value,
-      username: userName.value,
-      email: emailField.value
-    };
-
-    // Verificar si se ha seleccionado una imagen de perfil
-    if (fileInput.files.length > 0) {
-      const file = fileInput.files[0];
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const base64Image = e.target.result;
-        userData.profileImage = base64Image; // Guardar la imagen en base64
-        imgProfile.src = base64Image; // Mostrar la imagen de perfil en tiempo real
-        localStorage.setItem(userName, JSON.stringify(userData)); // Guardar todos los datos en localStorage
+    const form = document.querySelector('.needs-validation'); // Seleccionamos el formulario
+    
+    // Validar el formulario antes de guardar
+    if (form.checkValidity()) {
+      const userData = {
+        name: campoNombre.value,
+        secName: campoSegNomb.value,
+        surname: campoApellido.value,
+        secSurname: campoSegApell.value,
+        contact: campoContato.value,
+        email: emailField.value // Guardar también el email
       };
-      reader.readAsDataURL(file); // Convertir la imagen a base64
-    } else {
-      // Si no se ha cambiado la imagen, solo guardar el resto de los datos
-      localStorage.setItem(userName, JSON.stringify(userData));
-    }
 
-    alert("Datos guardados correctamente.");
+        // Verificar si se ha seleccionado una imagen de perfil
+        if (fileInput.files.length > 0) {
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const base64Image = e.target.result;
+            userData.profileImage = base64Image; // Guardar la imagen en base64
+            imgProfile.src = base64Image; // Mostrar la imagen de perfil en tiempo real
+            localStorage.setItem(userName, JSON.stringify(userData)); // Guardar todos los datos en localStorage
+          };
+          reader.readAsDataURL(file); // Convertir la imagen a base64
+        } else {
+          // Si no se ha cambiado la imagen, solo guardar el resto de los datos
+          localStorage.setItem(userName, JSON.stringify(userData));
+        }
+      } else {
+        event.preventDefault(); // Prevenir el guardado si no es válido
+        form.classList.add('was-validated'); // Activar los estilos de validación
+      }
+    });
   });
-
-});
