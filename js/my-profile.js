@@ -67,23 +67,23 @@ document.addEventListener("DOMContentLoaded", function () {
       email: emailField.value
     };
 
-        // Verificar si se ha seleccionado una imagen de perfil
-        if (fileInput.files.length > 0) {
-          const file = fileInput.files[0];
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            const base64Image = e.target.result;
-            userData.profileImage = base64Image; // Guardar la imagen en base64
-            imgProfile.src = base64Image; // Mostrar la imagen de perfil en tiempo real
-            localStorage.setItem(userName, JSON.stringify(userData)); // Guardar todos los datos en localStorage
-          };
-          reader.readAsDataURL(file); // Convertir la imagen a base64
-        } else {
-          // Si no se ha cambiado la imagen, solo guardar el resto de los datos
-          localStorage.setItem(userName, JSON.stringify(userData));
-        }
-    
-        alert("Datos guardados correctamente.");
-      });
+    // Verificar si se ha seleccionado una imagen de perfil
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const base64Image = e.target.result;
+        userData.profileImage = base64Image; // Guardar la imagen en base64
+        imgProfile.src = base64Image; // Mostrar la imagen de perfil en tiempo real
+        localStorage.setItem(userName, JSON.stringify(userData)); // Guardar todos los datos en localStorage
+      };
+      reader.readAsDataURL(file); // Convertir la imagen a base64
+    } else {
+      // Si no se ha cambiado la imagen, solo guardar el resto de los datos
+      localStorage.setItem(userName, JSON.stringify(userData));
+    }
 
+    alert("Datos guardados correctamente.");
   });
+
+});
