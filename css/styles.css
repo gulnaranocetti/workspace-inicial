@@ -383,7 +383,11 @@ padding: 1%;
 
 #img-profile {
   float: left;
-  padding-left: 6%;
+  background-color: #212529;
+  border: #212529;
+  border-color: #212529;
+  border-radius: 1px;
+  width: 12%;
 }
 
 /*ESTILOS DE SWITCH*/
@@ -499,5 +503,16 @@ body.active .list-group-item {
 }
 
 body.active #welcome-message{
-  background-color: #151e21 !important;
+  background-color: #212529 !important;
+}
+
+.rounded-circle {
+  padding: 15px;
+}
+
+.formulario {
+  padding-left: 15%;
+}
+.fotop {
+  margin-left: 15%;
 }
