@@ -509,3 +509,10 @@ body.active #welcome-message{
 .rounded-circle {
   padding: 15px;
 }
+
+.formulario {
+  padding-left: 15%;
+}
+.fotop {
+  margin-left: 15%;
+}
