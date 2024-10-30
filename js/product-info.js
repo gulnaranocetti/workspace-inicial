@@ -33,6 +33,20 @@ document.addEventListener("DOMContentLoaded", function(e) {
             // Mostrar la descripción del producto
             document.querySelector(".ProductDescription").innerText = selectedproducts.description;
 
+            //Mostrar boton de comprar
+            const comprar = document.createElement("button");
+            const btnContainer = document.querySelector(".comprar");
+
+            btnContainer.appendChild(comprar);
+
+            comprar.innerHTML= "Comprar"
+            comprar.className= "btn custom-btn"
+
+            comprar.addEventListener("click", () => {
+                window.location = "cart.html";
+            });
+            
+
             // Mostrar la categoría del producto
             document.querySelector(".ProductCategory").innerText = selectedproducts.category;
 
