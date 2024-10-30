@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(e) {
+document.addEventListener("DOMContentLoaded", function (e) {
     let prodID = localStorage.getItem("prodID");
     let productsURL = PRODUCT_INFO_URL + prodID + EXT_TYPE;
 
@@ -9,24 +9,24 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     let commentsURL = PRODUCT_INFO_COMMENTS_URL + prodID + EXT_TYPE;
 
-    getJSONData(commentsURL).then(function(resultObj) {
+    getJSONData(commentsURL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             commentsArray = resultObj.data;
             showCommentsList();
         }
-    }) 
+    })
 
-    getJSONData(productsURL).then(function(resultObj) {
+    getJSONData(productsURL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             let selectedproducts = resultObj.data;
 
 
             // Actualizamos el título del producto
             document.querySelector(".text-center.display-8").innerText = selectedproducts.name;
-            
+
             // Mostrar el precio del auto y la moneda
             document.querySelector(".productCost strong").innerText = `${selectedproducts.currency} ${selectedproducts.cost}`;
-            
+
             // Mostrar la cantidad de artículos vendidos
             document.querySelector(".vendidos").innerText = `PRODUCTOS VENDIDOS: ${selectedproducts.soldCount}`;
 
@@ -63,17 +63,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
                 cartItems.push({selectedproducts});
                 localStorage.setItem('PurchasedItems', JSON.stringify(cartItems));
-                window.location.href = 'cart.html'
+                window.location.href = 'cart.html',
+
             });
-    
+
 
             const relatedImage = document.getElementById("relatingProducts");
 
             // Asumiendo que `selectedproducts.relatedProducts` es un array
-            const relatedProducts = selectedproducts.relatedProducts; 
+            const relatedProducts = selectedproducts.relatedProducts;
 
             // Limpiar el contenedor antes de agregar las tarjetas
-            relatedImage.innerHTML = ''; 
+            relatedImage.innerHTML = '';
 
             // Crear una fila para las tarjetas
             const row = document.createElement("div");
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 // Crear un contenedor para la tarjeta
                 const col = document.createElement("div");
                 col.className = "col-md-6 d-flex justify-content-center"; // Clases para columnas (2 tarjetas por fila)
-                
+
                 const card = document.createElement("div");
                 card.className = "card"; // Clase para la tarjeta
                 card.style.width = "70%"; // Ancho de la tarjeta al 100%
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 const imgRelated = document.createElement("img");
                 imgRelated.src = product.image; // Asignar la fuente de la imagen
                 imgRelated.className = "card-img-top "; // Clase para el estilo de imagen
-                
+
                 // Crear el cuerpo de la tarjeta
                 const cardBody = document.createElement("div");
                 cardBody.className = "card-body";
@@ -104,23 +105,23 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 productName.innerText = product.name; // Asignar el nombre del producto
 
                 const link = document.createElement("button");
-                link.innerHTML= "Ver"
-                link.className= "btn custom-btn"
+                link.innerHTML = "Ver"
+                link.className = "btn custom-btn"
 
                 link.addEventListener("click", () => {
                     localStorage.setItem("prodID", product.id);
                     window.location = "product-info.html";
                 });
-                
+
                 // Agregar elementos al cuerpo de la tarjeta
                 cardBody.appendChild(productName);
                 cardBody.appendChild(link);
                 card.appendChild(imgRelated);
                 card.appendChild(cardBody);
-                
+
                 // Añadir la tarjeta a la columna
                 col.appendChild(card);
-                
+
                 // Añadir la columna a la fila
                 row.appendChild(col);
             });
@@ -128,14 +129,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
             // Añadir la fila al contenedor de productos relacionados
             relatedImage.appendChild(row);
         }
-    })       
+    })
 });
 
-function showCommentsList(){
+function showCommentsList() {
     let htmlContentToAppend = "";
     const maxStars = 5; // Número máximo de estrellas que se puede mostra
 
-    for(let i = 0; i < commentsArray.length; i++){
+    for (let i = 0; i < commentsArray.length; i++) {
         let comment = commentsArray[i];
 
         // Generar estrellas llenas y vacías según el valor numberrange
@@ -170,7 +171,7 @@ function capturaValor(estrella) {
     starRating = parseInt(estrella.value); // Guardar el valor de la estrella seleccionada
 }
 
-document.getElementById("commentForm").addEventListener("submit", function(e) {
+document.getElementById("commentForm").addEventListener("submit", function (e) {
     e.preventDefault(); // Evitar que se recargue la página
     let username = localStorage.getItem("username");
 
