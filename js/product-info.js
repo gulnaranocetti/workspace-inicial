@@ -55,6 +55,19 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
             });
 
+            // btn de comprar
+            document.getElementById('add-to-cart').addEventListener('click', function() {
+                let cartItems = JSON.parse(localStorage.getItem('PurchasedItems')) || [];
+                
+                // Agregar el producto al carrito
+                cartItems.push(selectedProduct);
+                localStorage.setItem('PurchasedItems', JSON.stringify(cartItems));
+                
+                // Redirigir a la página del carrito
+                window.location.href = 'cart.html';
+            });
+    
+
             const relatedImage = document.getElementById("relatingProducts");
 
             // Asumiendo que `selectedproducts.relatedProducts` es un array
