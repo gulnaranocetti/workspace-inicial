@@ -10,7 +10,9 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -41,134 +43,132 @@
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" href="#" id="logout-button">Cerrar sesión</a></li>
             </ul>
-          </li> 
+          </li>
 
         </ul>
       </div>
     </div>
   </nav>
-<!-- comienza boton darkmode -->
-<div class="d-flex justify-content-end">
-  <div class="darkM me-4">
-    <li class="switch">
-      <i class="fa-solid fa-sun"></i>
-      <i class="fa-solid fa-moon"></i>
-    </li>
+  <!-- comienza boton darkmode -->
+  <div class="d-flex justify-content-end">
+    <div class="darkM me-4">
+      <li class="switch">
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-moon"></i>
+      </li>
+    </div>
   </div>
-</div>
-<!-- termina boton darkmode -->
+  <!-- termina boton darkmode -->
   <main>
     <div class="jumbotron mb-4 text-center">
     </div>
     <div class="container-custom">
       <div class="row">
         <!-- Contenedor para la categoría del producto -->
-    <div class="row">
-      <div class="col-12 text-center">
-        <h2 class="ProductCategory p-2 border border-secondary rounded">Categoría</h2> 
-      </div>
-    </div>
-    <div class="row">
-        <!-- Contenedor para la imagen principal del producto -->
-        <div class="col-md-6 text-center">
-          <img id="mainProductImage" alt="Imagen del producto" class="img-fluid"> <!-- Cambiado para ser dinámico -->
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2 class="ProductCategory p-2 border border-secondary rounded">Categoría</h2>
+          </div>
         </div>
-        <div class="col-md-6 content-text p-4 bg-light border">
+        <div class="row">
+          <!-- Contenedor para la imagen principal del producto -->
+          <div class="col-md-6 text-center">
+            <img id="mainProductImage" alt="Imagen del producto" class="img-fluid"> <!-- Cambiado para ser dinámico -->
+          </div>
+          <div class="col-md-6 content-text p-4 bg-light border">
 
-          <!-- titulo del producto -->
-          <h2 class="text-center display-8"></h2>
+            <!-- titulo del producto -->
+            <h2 class="text-center display-8"></h2>
 
-          <!-- Aquí agregamos la descripción del producto -->
-          <h4 class="text-right responsive-text">Características Principales:</h4>
-          <h4 class="ProductDescription text-right responsive-text"></h4>
+            <!-- Aquí agregamos la descripción del producto -->
+            <h4 class="text-right responsive-text">Características Principales:</h4>
+            <h4 class="ProductDescription text-right responsive-text"></h4>
 
-          <!-- Cantidad de articulos vendidos -->
-          <div class="row mt-4">
-            <div class="col-md-6 text-start">
-              <p class="vendidos">PRODUCTOS VENDIDOS:</p>
-            </div>
+            <!-- Cantidad de articulos vendidos -->
+            <div class="row mt-4">
+              <div class="col-md-6 text-start">
+                <p class="vendidos">PRODUCTOS VENDIDOS:</p>
+              </div>
 
-          <!-- Moneda y precio-->
-            <div class="col-md-6 text-end">
-              <p class="productCost"><strong>Precio:</strong></p>
-              <button class="btn btn-warning" id="add-to-cart">Comprar</button>
+              <!-- Moneda y precio-->
+              <div class="col-md-6 text-end">
+                <p class="productCost"><strong>Precio:</strong></p>
+                <button class="btn btn-warning" id="add-to-cart">Comprar</button>
+              </div>
             </div>
           </div>
-
-          <!-- boton de comprar -->
-           <div class="mt-3 comprar"></div>
-
         </div>
       </div>
-    </div>          
-  
-    <div class="container-fluid img bg-light border mt-5">
-      <div class="row row1 product-images">
-        <!-- Aquí se agregarán dinámicamente las imágenes -->
+
+      <div class="container-fluid img bg-light border mt-5">
+        <div class="row row1 product-images">
+          <!-- Aquí se agregarán dinámicamente las imágenes -->
+        </div>
       </div>
-    </div>
-    <h2 class="d-flex justify-content-center p-3">Opiniones del producto</h2>
-    <div class="container card">
-      <div class="row dark">
+      <h2 class="d-flex justify-content-center p-3">Opiniones del producto</h2>
+      <div class="container card">
+        <div class="row dark">
           <h6 class="col fw-bold">Usuario</h6>
           <h6 class="col fw-bold">Comentario</h6>
           <h6 class="col fw-bold">Calificación</h6>
+        </div>
       </div>
-  </div>
-    <div id="comments-list-container"></div>
-    <h2 class="d-flex justify-content-center p-3">¿Qué te pareció tu producto?</h2>
-    <div class="container card">
-    <!-- Pauta 3-Entrega 4 -->
-    <form id="commentForm" action="">
-    
-    <div> <!-- Estrellas -->
-      <p class="fs-3 mb-2 fw-normal">Calificar</p>
-      <div class="clasificacion">
-        <input type="radio" id="radio1" class="estrella" name="estrellas" value="5" onclick="capturaValor(this)">
-        <label for="radio1" style="cursor: pointer;">★</label>
-    
-        <input type="radio" id="radio2" class="estrella" name="estrellas" value="4" onclick="capturaValor(this)">
-        <label for="radio2" style="cursor: pointer;">★</label>
-    
-        <input type="radio" id="radio3" class="estrella" name="estrellas" value="3" onclick="capturaValor(this)">
-        <label for="radio3" style="cursor: pointer;">★</label>
-        
-        <input type="radio" id="radio4" class="estrella" name="estrellas" value="2" onclick="capturaValor(this)">
-        <label for="radio4" style="cursor: pointer;">★</label>
-        
-        <input type="radio" id="radio5" class="estrella" name="estrellas" value="1" onclick="capturaValor(this)">
-        <label for="radio5" style="cursor: pointer;">★</label>
-      </div>
-    </div>
+      <div id="comments-list-container"></div>
+      <h2 class="d-flex justify-content-center p-3">¿Qué te pareció tu producto?</h2>
+      <div class="container card">
+        <!-- Pauta 3-Entrega 4 -->
+        <form id="commentForm" action="">
 
-    <div class="flex-column align-items-end">
-      <!-- Comentarios -->
-      <div class="w-100">
-        <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
-        <textarea class="form-control mb-3" rows="4" id="comment" name="text" placeholder="Agregar un comentario"></textarea>
-      </div>
-  
-      <!-- Botón -->
-      <div class="text-end">
-        <button type="submit" class="btn btn-outline-warning mb-3" id="enviar">Enviar</button>
-      </div>
-    </div>
-  </form>
-    </div>
+          <div> <!-- Estrellas -->
+            <p class="fs-3 mb-2 fw-normal">Calificar</p>
+            <div class="clasificacion">
+              <input type="radio" id="radio1" class="estrella" name="estrellas" value="5" onclick="capturaValor(this)">
+              <label for="radio1" style="cursor: pointer;">★</label>
 
-    <div class="d-flex justify-content-center p-4">
-      <h2>Productos que te pueden interesar</h2>
-    </div>
-    <div id="relatingProducts"></div>
+              <input type="radio" id="radio2" class="estrella" name="estrellas" value="4" onclick="capturaValor(this)">
+              <label for="radio2" style="cursor: pointer;">★</label>
+
+              <input type="radio" id="radio3" class="estrella" name="estrellas" value="3" onclick="capturaValor(this)">
+              <label for="radio3" style="cursor: pointer;">★</label>
+
+              <input type="radio" id="radio4" class="estrella" name="estrellas" value="2" onclick="capturaValor(this)">
+              <label for="radio4" style="cursor: pointer;">★</label>
+
+              <input type="radio" id="radio5" class="estrella" name="estrellas" value="1" onclick="capturaValor(this)">
+              <label for="radio5" style="cursor: pointer;">★</label>
+            </div>
+          </div>
+
+          <div class="flex-column align-items-end">
+            <!-- Comentarios -->
+            <div class="w-100">
+              <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
+              <textarea class="form-control mb-3" rows="4" id="comment" name="text"
+                placeholder="Agregar un comentario"></textarea>
+            </div>
+
+            <!-- Botón -->
+            <div class="text-end">
+              <button type="submit" class="btn btn-outline-warning mb-3" id="enviar">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="d-flex justify-content-center p-4">
+        <h2>Productos que te pueden interesar</h2>
+      </div>
+      <div id="relatingProducts"></div>
 
   </main>
-  
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <div id="spinner-wrapper">
