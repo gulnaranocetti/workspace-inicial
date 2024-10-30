@@ -55,16 +55,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
             });
 
+
             // btn de comprar
             document.getElementById('add-to-cart').addEventListener('click', function() {
+
                 let cartItems = JSON.parse(localStorage.getItem('PurchasedItems')) || [];
-                
-                // Agregar el producto al carrito
-                cartItems.push(selectedProduct);
+
+                cartItems.push({selectedproducts});
                 localStorage.setItem('PurchasedItems', JSON.stringify(cartItems));
-                
-                // Redirigir a la página del carrito
-                window.location.href = 'cart.html';
+                window.location.href = 'cart.html'
             });
     
 
