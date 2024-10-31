@@ -5,12 +5,12 @@ function showCartItems(cartItems) {
             <div class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12">
-                        <img src="${item.image}" alt="${item.description}" class="img-thumbnail">
+                        <img src="${item.selectedproducts.images[0]}" alt="${item.selectedproducts.description}" class="img-thumbnail">
                     </div>
                     <div class="col">
-                        <h4>${item.name}</h4>
-                        <p>${item.currency} ${item.cost}</p>
-                        <small class="text-muted">${item.soldCount} vendidos</small>
+                        <h4>${item.selectedproducts.name}</h4>
+                        <p>${item.selectedproducts.currency} ${item.selectedproducts.cost}</p>
+                        <small class="text-muted">${item.selectedproducts.soldCount} vendidos</small>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@ function showCartItems(cartItems) {
 
 document.addEventListener("DOMContentLoaded", function(e) {
     // Verificar si hay productos en el carrito
-    let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    let cartItems = JSON.parse(localStorage.getItem("PurchasedItems"));
 
     if (cartItems && cartItems.length > 0) {
         // Llamar a una función para mostrar los productos en el carrito
