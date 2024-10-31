@@ -516,3 +516,6 @@ body.active #welcome-message{
 .fotop {
   margin-left: 15%;
 }
+.fw-bold {
+  font-weight: 500 !important;
+}
