@@ -59,20 +59,21 @@ function showCartItems(cartItems) {
   function updateTotal(cartItems) {
     let total = 0;
     cartItems.forEach((item, index) => {
-      //cambio
-      const quantity = parseInt(document.getElementById(`quantity-${index}`).value);
-      let subtotal = item.selectedproducts.cost * quantity;
-      
-      if (item.selectedproducts.currency !== 'UYU') {
-        subtotal *= 40;
-      }
-  
-      total += subtotal;
-    });
-    document.getElementById("Total").innerText = `${total}`;
-    document.getElementById("suma-art").innerText = cartItems.length;
-  }
+        const quantity = parseInt(document.getElementById(`quantity-${index}`).value);
+        let subtotal = item.selectedproducts.cost * quantity;
 
+        // Solo multiplica por 40 si la moneda no es UYU
+        if (item.selectedproducts.currency !== 'UYU') {
+            subtotal *= 40;
+        }
+
+        total += subtotal;
+    });
+    
+    // Muestra el total en UYU
+    document.getElementById("Total").innerText = `UYU ${total}`;
+    document.getElementById("suma-art").innerText = cartItems.length;
+}
 
   // Función para actualizar el contador del carrito
 function updateCartCount() {
