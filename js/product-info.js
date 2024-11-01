@@ -63,8 +63,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                 cartItems.push({selectedproducts});
                 localStorage.setItem('PurchasedItems', JSON.stringify(cartItems));
-                window.location.href = 'cart.html',
-
+                window.location.href = 'cart.html';
             });
 
 
