@@ -30,9 +30,11 @@ function showCartItems(cartItems) {
           </div>
         </div>
       `;
+      const subtotal = item.selectedproducts.cost;
+      updateTotal(cartItems,subtotal);
     });
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
-    updateTotal(cartItems); // Calcula el total inicial
+    updateTotal(cartItems, subtotal); // Calcula el total inicial
   }
   
   function updateQuantity(index, change) {
