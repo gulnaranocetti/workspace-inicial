@@ -30,11 +30,9 @@ function showCartItems(cartItems) {
           </div>
         </div>
       `;
-      const subtotal = item.selectedproducts.cost;
-      updateTotal(cartItems,subtotal);
     });
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
-    updateTotal(cartItems, subtotal); // Calcula el total inicial
+    updateTotal(cartItems); // Calcula el total inicial
   }
   
   function updateQuantity(index, change) {
@@ -54,20 +52,17 @@ function showCartItems(cartItems) {
       const subtotal = item.selectedproducts.cost * quantity;
       document.getElementById(`subtotal-${index}`).innerText = `Subtotal: ${item.selectedproducts.currency} ${subtotal}`;
     
-      updateTotal(cartItems, subtotal); // Recalcula el total general
+      updateTotal(cartItems); // Recalcula el total general
     }
   }
   
-  function updateTotal(cartItems, subtotal) {
+  function updateTotal(cartItems) {
     let total = 0;
-    cartItems.forEach((item) => {
-        if (item.selectedproducts.currency !== 'UYU'){
-            subtotal = subtotal * 40;
-            total += subtotal;
-        }
-      
+    cartItems.forEach((item, index) => {
+      const quantity = parseInt(document.getElementById(`quantity-${index}`).value) || 1;
+      total += item.selectedproducts.cost * quantity;
     });
-    document.getElementById("Total").innerText = `${total}`;
+    document.getElementById("Total").innerText = `Total: ${cartItems[0].selectedproducts.currency} ${total}`;
     document.getElementById("suma-art").innerText = cartItems.length;
   }
   
@@ -87,9 +82,9 @@ function showCartItems(cartItems) {
     } else {
       document.getElementById("prod-list-container").innerHTML = `
         <div class="alert alert-info text-center" role="alert">
-            No hay productos en el carrito.
+          No hay productos en el carrito.
         </div>
-        `;
+      `;
     }
-    });
+  });
   
