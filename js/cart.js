@@ -52,32 +52,50 @@ function showCartItems(cartItems) {
       const subtotal = item.selectedproducts.cost * quantity;
       document.getElementById(`subtotal-${index}`).innerText = `Subtotal: ${item.selectedproducts.currency} ${subtotal}`;
     
-      updateTotal(cartItems, subtotal); // Recalcula el total general
+      updateTotal(cartItems); // Recalcula el total general
     }
   }
-  
-  function updateTotal(cartItems, subtotal) {
+
+  function updateTotal(cartItems) {
     let total = 0;
-    cartItems.forEach((item) => {
-        if (item.selectedproducts.currency !== 'UYU'){
-            subtotal = subtotal * 40;
-        }
-        total += subtotal;
+    cartItems.forEach((item, index) => {
+      //cambio
+      const quantity = parseInt(document.getElementById(`quantity-${index}`).value);
+      let subtotal = item.selectedproducts.cost * quantity;
+      
+      if (item.selectedproducts.currency !== 'UYU') {
+        subtotal *= 40;
+      }
+  
+      total += subtotal;
     });
     document.getElementById("Total").innerText = `${total}`;
     document.getElementById("suma-art").innerText = cartItems.length;
   }
+
+
+  // Función para actualizar el contador del carrito
+function updateCartCount() {
+  const cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
+  const cartCount = cartItems.length;
+  localStorage.setItem("cart-count", cartCount); // Actualizar en localStorage
+  document.getElementById("cart-count").innerText = cartCount; // Actualizar en la página
+}
   
   function borrarProducto(indice) {
     let cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
     if (indice >= 0 && indice < cartItems.length) {
       cartItems.splice(indice, 1);
       localStorage.setItem("PurchasedItems", JSON.stringify(cartItems));
+      updateCartCount();
       showCartItems(cartItems); // Mostrar de nuevo los elementos
     } 
   }
+
   
   document.addEventListener("DOMContentLoaded", function(e) {
+    updateCartCount();
+
     let cartItems = JSON.parse(localStorage.getItem("PurchasedItems"));
     if (cartItems && cartItems.length > 0) {
       showCartItems(cartItems);

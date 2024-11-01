@@ -50,6 +50,10 @@ document.getElementById("logout-button").addEventListener("click", function() {
 })
 
 document.addEventListener("DOMContentLoaded", function(){
+
+  let cartCount = localStorage.getItem("cart-count");
+  document.getElementById("cart-count").innerHTML = cartCount;
+
   // Obtén el valor de localStorage y conviértelo a booleano
   let storedValue = localStorage.getItem("userLoggedIn");
   let logged = storedValue === 'true'; // Será true solo si storedValue es 'true'
