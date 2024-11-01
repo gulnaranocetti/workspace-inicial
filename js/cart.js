@@ -61,9 +61,8 @@ function showCartItems(cartItems) {
     cartItems.forEach((item) => {
         if (item.selectedproducts.currency !== 'UYU'){
             subtotal = subtotal * 40;
-            total += subtotal;
         }
-      
+        total += subtotal;
     });
     document.getElementById("Total").innerText = `${total}`;
     document.getElementById("suma-art").innerText = cartItems.length;
