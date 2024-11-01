@@ -9,7 +9,9 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -40,42 +42,41 @@
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" href="#" id="logout-button">Cerrar sesión</a></li>
             </ul>
-          </li> 
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- comienza boton darkmode -->
-<div class="d-flex justify-content-end">
-  <div class="darkM me-4">
-    <li class="switch">
-      <i class="fa-solid fa-sun"></i>
-      <i class="fa-solid fa-moon"></i>
-    </li>
+  <div class="d-flex justify-content-end">
+    <div class="darkM me-4">
+      <li class="switch">
+        <i class="fa-solid fa-sun"></i>
+        <i class="fa-solid fa-moon"></i>
+      </li>
+    </div>
   </div>
-</div>
-<!-- termina boton darkmode -->
+  <!-- termina boton darkmode -->
   <main>
-    <section class="h-100 h-custom" style="background-color: #d2c9ff;">
+    <section class="h-100 h-custom">
       <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-12">
-                  <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                  <div class="card card-registration card-registration-2" style="border-radius: 15px; width: 100%;">
                       <div class="card-body p-0">
                           <div class="row g-0">
-                              <div class="col-lg-8">
+                              <div class="col-12"> <!-- Cambié col-lg-8 a col-12 -->
                                   <div class="p-5">
                                       <div class="d-flex justify-content-between align-items-center mb-5">
                                           <h1 class="fw-bold mb-0">Mi carrito</h1>
-                                          <h6 class="mb-0 text-muted"></h6>
                                       </div>
-                                      <hr class="my-4">
+                                      <hr>
   
                                       <!-- Contenedor dinámico para los productos del carrito -->
                                       <div id="prod-list-container">
                                           <!-- Aquí se mostrarán los productos del carrito -->
                                       </div>
-                                      
+  
                                       <div class="pt-5">
                                           <h6 class="mb-0">
                                               <a href="#!" class="text-body">
@@ -84,16 +85,7 @@
                                           </h6>
                                       </div>
                                   </div>
-                              </div>
-  
-                              <!-- Resumen y otros detalles aquí -->
-                              <div class="col-lg-4 bg-body-tertiary">
-                                  <div class="p-5">
-                                      <h3 class="fw-bold mb-5 mt-2 pt-1">Total</h3>
-                                      <!-- Más contenido aquí -->
-                                  </div>
-                              </div>
-  
+                              </div> <!-- Aquí se ajustó para que ocupe toda la columna -->
                           </div>
                       </div>
                   </div>
@@ -102,6 +94,7 @@
       </div>
   </section>
   
+
   </main>
   <footer class="text-muted">
     <div class="container">
