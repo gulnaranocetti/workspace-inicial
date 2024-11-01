@@ -516,3 +516,14 @@ body.active #welcome-message{
 .fotop {
   margin-left: 15%;
 }
+.btn-continuar {
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.resumen-compra {
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
