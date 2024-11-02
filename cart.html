@@ -38,7 +38,8 @@
               <span id="user-name"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="cart.html">Mi carrito<span id="cart-count" class="badge bg-danger"></span></a></li>
+              <li><a class="dropdown-item" href="cart.html">Mi carrito<span id="cart-count"
+                    class="badge bg-danger"></span></a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" href="#" id="logout-button">Cerrar sesión</a></li>
             </ul>
@@ -61,57 +62,48 @@
     <section class="h-100 h-custom">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12">
-            <div class="card card-registration card-registration-2" style="border-radius: 15px; width: 100%;">
-              <div class="card-body p-0">
-                <div class="row g-0">
-                  <div class="col-12">
-                    <div class="p-5">
-                      <div class="pt-5">
-                        <h6 class="mb-0">
-                          <a href="categories.html" class="text-body"><i
-                              class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a>
-                        </h6>
-                      </div>
-                      <hr>
-                      <div class="d-flex justify-content-between align-items-center mb-5">
-                        <h5 class="fw-bold mb-0">Mi carrito</h5>
-                      </div>
-
-                      <!-- Contenedor dinámico para los productos del carrito -->
-                      <div id="prod-list-container">
-                        <!-- Aquí se mostrarán los productos del carrito -->
+          <div class="card-registration card-registration-2" style="border-radius: 15px; width: 100%;">
+            <div class="card-body">
+              <div class="row g-0">
+                <div class="col-12">
+                  <div>
+                    <h6>
+                      <a href="categories.html" class="text-body"><i
+                          class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a>
+                    </h6>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="fw-bold">Mi carrito</h5>
+                    </div>
+                    <!-- Contenedor dinámico para los productos del carrito -->
+                    <div id="prod-list-container">
+                      <!-- Aquí se mostrarán los productos del carrito -->
+                    </div>
+                    <div class="container m-2" id="total-container">
+                      <div class="resumen-compra orange">
+                        <h5>Resumen de la compra</h5>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                          <p class="mb-1">Moneda:</p>
+                          <p class="mb-1" id="moneda-gral">UYU</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <p class="mb-1">Cantidad de Artículos:</p>
+                          <p class="mb-1" id="suma-art"></p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                          <h5><strong>Total:</strong></h5>
+                          <h5 class="mb-1"><strong id="Total"></strong></h5>
+                          <button class="btn btn-continuar">CONTINUAR</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="container mt-5" id="total-container">
-            <div class="resumen-compra orange">
-              <h5>Resumen de la compra</h5>
-              <hr>
-              <div class="d-flex justify-content-between">
-                <p class="mb-1">Moneda:</p>
-                <p class="mb-1" id="moneda-gral">UYU</p>
-              </div>
-              <div class="d-flex justify-content-between">
-                <p class="mb-1">Cantidad de Artículos:</p>
-                <p class="mb-1" id="suma-art"></p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <h5><strong>Total:</strong></h5>
-                <p class="mb-1" id="Total"></p>
-                <button class="btn btn-continuar">CONTINUAR</button>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
-
-
 
   </main>
   <footer class="text-muted">

@@ -527,3 +527,9 @@ body.active #welcome-message{
   padding: 20px;
   border-radius: 10px;
 }
+
+.padding{
+  padding-left: 2%;
+  padding-top: 2%;
+  padding-right: 2%;
+}
