@@ -61,6 +61,7 @@ function updateQuantity(index, change) {
   if (newQuantity < 1) newQuantity = 1;
   quantityInput.value = newQuantity;
   updateSubtotal(index);
+  updateCartCount();
 }
 
 // Función para actualizar el subtotal y total general
@@ -76,12 +77,14 @@ function updateSubtotal(index) {
     item.quantity = quantity; // Almacena la cantidad actualizada en el localStorage
     localStorage.setItem("PurchasedItems", JSON.stringify(cartItems)); // Cambio: Guarda la cantidad actualizada en localStorage
     updateTotal(cartItems); // Recalcula el total general después de actualizar el subtotal
+    updateCartCount();
   }
 }
 
 // Función para calcular el total general
 function updateTotal(cartItems) {
   let total = 0;
+  let totalQuantity = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
   cartItems.forEach((item) => {
       let subtotal = item.selectedproducts.cost * item.quantity;
       if (item.selectedproducts.currency !== 'UYU') {
@@ -90,7 +93,7 @@ function updateTotal(cartItems) {
       total += subtotal; // Acumula el subtotal al total general
   });
   document.getElementById("Total").innerText = `${total} UYU`; // Cambio: Muestra el total en UYU
-  document.getElementById("suma-art").innerText = cartItems.length;
+  document.getElementById("suma-art").innerText = totalQuantity;
 }
 
 // Función para eliminar un producto del carrito
@@ -101,11 +104,13 @@ function borrarProducto(index) {
       cartItems.splice(index, 1);
       localStorage.setItem("PurchasedItems", JSON.stringify(cartItems));
       showCartItems(cartItems); // Actualizar la lista de productos después de eliminar
+      updateCartCount();
   }
 }
 
 // Al cargar el documento, mostrar el carrito si hay productos guardados
 document.addEventListener("DOMContentLoaded", function() {
+  updateCartCount();
   let cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
   if (cartItems.length > 0) {
       showCartItems(cartItems); // Cambio: Llama a showCartItems solo si hay productos guardados
@@ -117,3 +122,11 @@ document.addEventListener("DOMContentLoaded", function() {
       `;
   }
 });
+
+// Función para actualizar el contador del carrito sumando todas las cantidades
+function updateCartCount() {
+  const cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
+  let totalQuantity = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+  localStorage.setItem("cart-count", totalQuantity); // Guardar en localStorage
+  document.getElementById("cart-count").innerText = totalQuantity; // Actualizar en el badge
+}
