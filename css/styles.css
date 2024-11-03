@@ -506,6 +506,10 @@ body.active #welcome-message{
   background-color: #212529 !important;
 }
 
+body.active .text-body {
+  color: #ffffff !important;
+}
+
 .rounded-circle {
   padding: 15px;
 }
