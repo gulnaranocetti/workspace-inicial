@@ -4,10 +4,12 @@ function groupCartItems(cartItems) {
   const groupedItems = {};
   cartItems.forEach(item => {
       const productName = item.selectedproducts.name;
+      
+      // Si el producto ya está en `groupedItems`, suma la cantidad
       if (groupedItems[productName]) {
-          groupedItems[productName].quantity += 1;
+          groupedItems[productName].quantity += item.quantity; // Suma la cantidad actual de localStorage
       } else {
-          groupedItems[productName] = { ...item, quantity: 1 };
+          groupedItems[productName] = { ...item }; // Copia el item completo, incluyendo la cantidad
       }
   });
   return Object.values(groupedItems);
