@@ -1,12 +1,15 @@
+
 // Función para agrupar los productos en función de su nombre
 function groupCartItems(cartItems) {
   const groupedItems = {};
   cartItems.forEach(item => {
       const productName = item.selectedproducts.name;
+      
+      // Si el producto ya está en `groupedItems`, suma la cantidad
       if (groupedItems[productName]) {
-        groupedItems[productName].quantity += item.quantity;
+          groupedItems[productName].quantity += item.quantity; // Suma la cantidad actual de localStorage
       } else {
-        groupedItems[productName] = { ...item };
+          groupedItems[productName] = { ...item }; // Copia el item completo, incluyendo la cantidad
       }
   });
   return Object.values(groupedItems);
@@ -20,18 +23,17 @@ function showCartItems(cartItems) {
   groupedCartItems.forEach((item, index) => {
       const subtotal = item.selectedproducts.cost * item.quantity; // Cambio: Calcula el subtotal por producto basado en la cantidad
       htmlContentToAppend += `
-      <div class="card padding m-3" style="border-radius: 15px; width: 100%;">
         <div class="row mb-4 d-flex justify-content-between align-items-center">
-          <div class="col-2">
+          <div class="col-md-2 col-lg-2 col-xl-2">
             <img src="${item.selectedproducts.images[0]}" alt="${item.selectedproducts.description}" class="img-thumbnail">
           </div>
-          <div class="col-2">
+          <div class="col-md-3 col-lg-3 col-xl-3">
             <h6 class="mb-0">${item.selectedproducts.name}</h6>
           </div>
-          <div class="col-2">
+          <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
             <h6 class="mb-0">P/u: ${item.selectedproducts.currency} ${item.selectedproducts.cost}</h6>
           </div>
-          <div class="col-2 d-flex">
+          <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
             <button class="btn btn-link px-2" onclick="updateQuantity(${index}, -1)">
               <i class="fas fa-minus"></i>
             </button>
@@ -41,14 +43,13 @@ function showCartItems(cartItems) {
               <i class="fas fa-plus"></i>
             </button>
           </div>
-          <div class="col-3">
+          <div class="col-md-2 col-lg-2 col-xl-2 text-end">
             <h6 class="mb-0" id="subtotal-${index}">Subtotal: ${item.selectedproducts.currency} ${subtotal}</h6>
           </div>
-          <div class="col-1">
+          <div class="col-md-1 col-lg-1 col-xl-1 text-end">
             <a href="#!" class="text-muted" onclick="borrarProducto(${index})"><i class="fas fa-times"></i></a>
           </div>
         </div>
-      </div>
       `;
   });
   document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
@@ -57,11 +58,17 @@ function showCartItems(cartItems) {
 
 // Función para actualizar la cantidad de un producto
 function updateQuantity(index, change) {
+  
   const quantityInput = document.getElementById(`quantity-${index}`);
+  
   let newQuantity = parseInt(quantityInput.value) + change;
+  
   if (newQuantity < 1) newQuantity = 1;
+  
   quantityInput.value = newQuantity;
+  
   updateSubtotal(index);
+  
   updateCartCount();
 }
 
@@ -93,7 +100,7 @@ function updateTotal(cartItems) {
       }
       total += subtotal; // Acumula el subtotal al total general
   });
-  document.getElementById("Total").innerText = `${total}`; // Cambio: Muestra el total en UYU
+  document.getElementById("Total").innerText = `${total} UYU`; // Cambio: Muestra el total en UYU
   document.getElementById("suma-art").innerText = totalQuantity;
 }
 
