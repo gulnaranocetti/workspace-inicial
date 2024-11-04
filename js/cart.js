@@ -18,7 +18,8 @@ function showCartItems(cartItems) {
   let htmlContentToAppend = "";
 
   groupedCartItems.forEach((item, index) => {
-      const subtotal = item.selectedproducts.cost * item.quantity; // Cambio: Calcula el subtotal por producto basado en la cantidad
+      const quantity = item.quantity || 1; // Cambio: Asigna 1 como valor predeterminado si quantity está undefined
+      const subtotal = item.selectedproducts.cost * quantity; // Calcula el subtotal por producto basado en la cantidad
       htmlContentToAppend += `
       <div class="card padding m-3" style="border-radius: 15px; width: 100%;">
         <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -35,7 +36,7 @@ function showCartItems(cartItems) {
             <button class="btn btn-link px-2" onclick="updateQuantity(${index}, -1)">
               <i class="fas fa-minus"></i>
             </button>
-            <input id="quantity-${index}" min="1" name="quantity" value="${item.quantity}" type="number"
+            <input id="quantity-${index}" min="1" name="quantity" value="${quantity}" type="number"
               class="form-control form-control-sm" onchange="updateSubtotal(${index})" />
             <button class="btn btn-link px-2" onclick="updateQuantity(${index}, 1)">
               <i class="fas fa-plus"></i>
@@ -52,7 +53,7 @@ function showCartItems(cartItems) {
       `;
   });
   document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
-  updateTotal(groupedCartItems); // Cambio: Actualizar el total después de mostrar los productos agrupados
+  updateTotal(groupedCartItems); // Actualizar el total después de mostrar los productos agrupados
 }
 
 // Función para actualizar la cantidad de un producto
@@ -68,15 +69,15 @@ function updateQuantity(index, change) {
 // Función para actualizar el subtotal y total general
 function updateSubtotal(index) {
   let cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
-  cartItems = groupCartItems(cartItems); // Cambio: Asegurarse de que los productos estén agrupados antes de actualizar
-  const quantity = parseInt(document.getElementById(`quantity-${index}`).value);
+  cartItems = groupCartItems(cartItems); // Asegurarse de que los productos estén agrupados antes de actualizar
+  const quantity = parseInt(document.getElementById(`quantity-${index}`).value) || 1; // Asigna 1 si quantity está undefined
   const item = cartItems[index];
 
   if (item) {
-    const subtotal = item.selectedproducts.cost * quantity; // Cambio: Calcula el subtotal basado en la cantidad actual
+    const subtotal = item.selectedproducts.cost * quantity;
     document.getElementById(`subtotal-${index}`).innerText = `Subtotal: ${item.selectedproducts.currency} ${subtotal}`;
     item.quantity = quantity; // Almacena la cantidad actualizada en el localStorage
-    localStorage.setItem("PurchasedItems", JSON.stringify(cartItems)); // Cambio: Guarda la cantidad actualizada en localStorage
+    localStorage.setItem("PurchasedItems", JSON.stringify(cartItems)); // Guarda la cantidad actualizada en localStorage
     updateTotal(cartItems); // Recalcula el total general después de actualizar el subtotal
     updateCartCount();
   }
@@ -85,22 +86,22 @@ function updateSubtotal(index) {
 // Función para calcular el total general
 function updateTotal(cartItems) {
   let total = 0;
-  let totalQuantity = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+  let totalQuantity = cartItems.reduce((total, item) => total + (item.quantity || 1), 0); // Asegura que quantity tenga un valor predeterminado
   cartItems.forEach((item) => {
-      let subtotal = item.selectedproducts.cost * item.quantity;
+      let subtotal = item.selectedproducts.cost * (item.quantity || 1); // Valor predeterminado para evitar NaN
       if (item.selectedproducts.currency !== 'UYU') {
-          subtotal *= 40; // Cambio: Conversión de moneda si no está en UYU
+          subtotal *= 40; // Conversión de moneda si no está en UYU
       }
       total += subtotal; // Acumula el subtotal al total general
   });
-  document.getElementById("Total").innerText = `${total}`; // Cambio: Muestra el total en UYU
+  document.getElementById("Total").innerText = `${total}`; // Muestra el total en UYU
   document.getElementById("suma-art").innerText = totalQuantity;
 }
 
 // Función para eliminar un producto del carrito
 function borrarProducto(index) {
   let cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
-  cartItems = groupCartItems(cartItems); // Cambio: Agrupa los productos antes de eliminar
+  cartItems = groupCartItems(cartItems); // Agrupa los productos antes de eliminar
   if (index >= 0 && index < cartItems.length) {
       cartItems.splice(index, 1);
       localStorage.setItem("PurchasedItems", JSON.stringify(cartItems));
@@ -114,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
   updateCartCount();
   let cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
   if (cartItems.length > 0) {
-      showCartItems(cartItems); // Cambio: Llama a showCartItems solo si hay productos guardados
+      showCartItems(cartItems); // Llama a showCartItems solo si hay productos guardados
   } else {
       document.getElementById("prod-list-container").innerHTML = `
           <div class="alert alert-info text-center" role="alert">
@@ -127,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // Función para actualizar el contador del carrito sumando todas las cantidades
 function updateCartCount() {
   const cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
-  let totalQuantity = cartItems.reduce((total, item) => total + (item.quantity || 1), 0);
+  let totalQuantity = cartItems.reduce((total, item) => total + (item.quantity || 1), 0); // Valor predeterminado
   localStorage.setItem("cart-count", totalQuantity); // Guardar en localStorage
   document.getElementById("cart-count").innerText = totalQuantity; // Actualizar en el badge
 }
