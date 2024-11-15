@@ -60,41 +60,45 @@
   <!-- termina boton darkmode -->
   <main>
     <section class="h-100 h-custom">
-      <div class="container py-5 h-100">
+      <div class="p-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="card-registration card-registration-2" style="border-radius: 15px; width: 100%;">
-            <div class="card-body">
-              <div class="row g-0">
-                <div class="col-12">
-                  <div>
-                    <h6>
-                      <a href="categories.html" class="text-body"><i
-                          class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a>
-                    </h6>
-                    <hr>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <h5 class="fw-bold">Mi carrito</h5>
-                    </div>
-                    <!-- Contenedor dinámico para los productos del carrito -->
-                    <div id="prod-list-container">
-                      <!-- Aquí se mostrarán los productos del carrito -->
-                    </div>
-                    <div class="container m-2" id="total-container">
-                      <div class="resumen-compra orange">
-                        <h5>Resumen de la compra</h5>
-                        <hr>
-                        <div class="d-flex justify-content-between">
-                          <p class="mb-1">Moneda:</p>
-                          <p class="mb-1" id="moneda-gral">UYU</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                          <p class="mb-1">Cantidad de Artículos:</p>
-                          <p class="mb-1" id="suma-art"></p>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                          <h5><strong>Total:</strong></h5>
-                          <h5 class="mb-1"><strong id="Total"></strong></h5>
-                          <button class="btn btn-continuar">CONTINUAR</button>
+          <div class="col-md-8">
+            <!-- Contenedor para productos y resumen -->
+            <div class="card-registration card-registration-2" style="border-radius: 15px; width: 100%;">
+              <div class="card-body">
+                <div class="row g-0">
+                  <div class="col-12">
+                    <div>
+                      <h6>
+                        <a href="categories.html" class="text-body"><i
+                            class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a>
+                      </h6>
+                      <hr>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold">Mi carrito</h5>
+                      </div>
+
+                      <!-- Contenedor dinámico para los productos del carrito -->
+                      <div id="prod-list-container">
+                        <!-- Aquí se mostrarán los productos del carrito -->
+                      </div>
+
+                      <div class="container m-2" id="total-container">
+                        <div class="resumen-compra orange">
+                          <h5>Resumen de la compra</h5>
+                          <hr>
+                          <div class="d-flex justify-content-between">
+                            <p class="mb-1">Moneda:</p>
+                            <p class="mb-1" id="moneda-gral">UYU</p>
+                          </div>
+                          <div class="d-flex justify-content-between">
+                            <p class="mb-1">Cantidad de Artículos:</p>
+                            <p class="mb-1" id="suma-art"></p>
+                          </div>
+                          <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h5><strong>Total:</strong></h5>
+                            <h5 class="mb-1"><strong id="Total"></strong></h5>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -102,10 +106,181 @@
                 </div>
               </div>
             </div>
-        </div>
-    </section>
+          </div>
 
+          <!-- Columna para las pestañas, ubicada a la derecha -->
+          <div class="col-md-4">
+            <div class="tab-content mt-4">
+              <ul class="nav nav-pills">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="envio-tab-link" data-bs-toggle="pill" href="#envio-tab">Envío</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pago-tab-link" data-bs-toggle="pill" href="#pago-tab">Pago</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="resumen-tab-link" data-bs-toggle="pill" href="#resumen-tab">Resumen</a>
+                </li>
+              </ul>
+
+              <!-- Pestaña de Envío -->
+              <div class="tab-pane fade show active" id="envio-tab">
+                <h5>Dirección de Envío</h5>
+                <form>
+                  <div class="mb-3 ">
+                    <label for="departamento">Departamento:</label>
+                    <select name="departamento" id="departamento" class="form-select dark">
+                      <option value="artigas">Artigas</option>
+                      <option value="canelones">Canelones</option>
+                      <option value="cerro_largo">Cerro Largo</option>
+                      <option value="colonia">Colonia</option>
+                      <option value="durazno">Durazno</option>
+                      <option value="flores">Flores</option>
+                      <option value="florida">Florida</option>
+                      <option value="lavalleja">Lavalleja</option>
+                      <option value="maldonado">Maldonado</option>
+                      <option value="montevideo">Montevideo</option>
+                      <option value="paysandu">Paysandú</option>
+                      <option value="rio_negro">Río Negro</option>
+                      <option value="rivera">Rivera</option>
+                      <option value="rocha">Rocha</option>
+                      <option value="salto">Salto</option>
+                      <option value="san_jose">San José</option>
+                      <option value="soriano">Soriano</option>
+                      <option value="tacuarembo">Tacuarembó</option>
+                      <option value="treinta_y_tres">Treinta y Tres</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control dark" id="localidad" placeholder="Localidad">
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control dark" id="calle" placeholder="Calle">
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-md-4">
+                      <input type="text" class="form-control dark" id="numero-dire" placeholder="Número">
+                    </div>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control dark" id="esquina" placeholder="Esquina">
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="opcionesEnvio" class="form-label">
+                      <h5>Tipo de Envío</h5>
+                    </label>
+                    <select class="form-select dark" id="opcionesEnvio">
+                      <option value="estandar">Premium 2 a 5 días (15%)</option>
+                      <option value="express">Express 5 a 8 días (7%)</option>
+                      <option value="express">Standard 12 a 15 días (5%)</option>
+                    </select>
+                  </div>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="pill" href="#pago-tab">Seguir a
+                    Pago</button>
+                </form>
+              </div>
+
+              <!-- Pestaña de Pago -->
+              <div class="tab-pane fade" id="pago-tab">
+                <!-- Selector de método de pago -->
+                <div class="mb-3">
+                  <label class="form-label">Seleccione el método de pago</label>
+                  <div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment-method" id="tarjeta-option"
+                        value="tarjeta" checked>
+                      <label class="form-check-label" for="tarjeta-option">
+                        Tarjeta
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment-method" id="transferencia-option"
+                        value="transferencia">
+                      <label class="form-check-label" for="transferencia-option">
+                        Transferencia Bancaria
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="card shadow-sm rounded orange">
+                  <div class="card-body">
+                    <!-- Formulario de pago con tarjeta -->
+                    <div id="tarjeta-form">
+                      <h5 class="mb-3">Pago con Tarjeta</h5>
+                      <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6 class="mb-0">Tarjeta</h6>
+                        <div class="payment-icons">
+                          <i class="fab fa-cc-mastercard fa-2x text-primary mx-1"></i>
+                          <i class="fab fa-cc-visa fa-2x text-warning mx-1"></i>
+                          <i class="fab fa-cc-amex fa-2x text-info mx-1"></i>
+                          <i class="fab fa-cc-paypal fa-2x text-secondary mx-1"></i>
+                        </div>
+                      </div>
+                      <form>
+                        <div class="mb-1">
+                          <label for="cardholder-name" class="form-label">Nombre del titular</label>
+                          <input type="text" id="cardholder-name" class="form-control" placeholder="Ej: Juan Pérez"
+                            required>
+                        </div>
+                        <div class="mb-1">
+                          <label for="card-number" class="form-label">Número de tarjeta</label>
+                          <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3457"
+                            maxlength="19" required>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mb-1">
+                            <label for="expiry-date" class="form-label">Vencimiento</label>
+                            <input type="text" id="expiry-date" class="form-control" placeholder="MM/AAAA" maxlength="7"
+                              required>
+                          </div>
+                          <div class="col-md-6 mb-1">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="password" id="cvv" class="form-control" placeholder="***" maxlength="3"
+                              required>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <!-- Formulario de transferencia bancaria -->
+                    <div id="transferencia-form" style="display: none;">
+                      <h5 class="mb-3">Pago por Transferencia Bancaria</h5>
+                      <p class="mb-3">
+                        Por favor realice la transferencia bancaria al siguiente número de cuenta:
+                      </p>
+                      <ul>
+                        <li><strong>Banco:</strong> BROU</li>
+                        <li><strong>Número de cuenta:</strong> 1111 1111 1111</li>
+                        <li><strong>Titular:</strong> e-Market</li>
+                        <li><strong>Referencia:</strong> Su nombre completo</li>
+                      </ul>
+                      <p>El envio será realizado una vez esté confirmada la transferencia.</p>
+                    </div>
+
+                    <!-- Botón de continuar -->
+                    <div class="text-center mt-2">
+                      <button type="submit" class="btn btn-primary w-100">Continuar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Pestaña de Resumen -->
+              <div class="tab-pane fade" id="resumen-tab">
+                <div class="resumen-compra">
+                  <button type="submit" class="btn btn-success">Finalizar Compra</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

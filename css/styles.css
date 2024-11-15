@@ -537,3 +537,15 @@ body.active .text-body {
   padding-top: 2%;
   padding-right: 2%;
 }
+
+.nav-pills .nav-link {
+  color: #000; 
+  background-color: transparent;
+  border-radius: 5px; 
+}
+
+.nav-pills .nav-link.active {
+  color: #fff; 
+  background-color: orange; 
+  font-weight: bold; 
+}

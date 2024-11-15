@@ -132,3 +132,19 @@ function updateCartCount() {
   localStorage.setItem("cart-count", totalQuantity); // Guardar en localStorage
   document.getElementById("cart-count").innerText = totalQuantity; // Actualizar en el badge
 }
+
+// Pestaña de pago
+document.querySelectorAll('input[name="payment-method"]').forEach((radio) => {
+  radio.addEventListener('change', function () {
+    const tarjetaForm = document.getElementById('tarjeta-form');
+    const transferenciaForm = document.getElementById('transferencia-form');
+
+    if (this.value === 'tarjeta') {
+      tarjetaForm.style.display = 'block';
+      transferenciaForm.style.display = 'none';
+    } else if (this.value === 'transferencia') {
+      tarjetaForm.style.display = 'none';
+      transferenciaForm.style.display = 'block';
+    }
+  });
+});
