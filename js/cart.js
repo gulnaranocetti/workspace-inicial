@@ -132,3 +132,24 @@ function updateCartCount() {
   localStorage.setItem("cart-count", totalQuantity); // Guardar en localStorage
   document.getElementById("cart-count").innerText = totalQuantity; // Actualizar en el badge
 }
+ // Seleccionar elementos
+ const openModal = document.getElementById('openModal');
+ const closeModal = document.getElementById('closeModal');
+ const modal = document.getElementById('modal');
+
+ // Abrir el modal
+ openModal.addEventListener('click', () => {
+   modal.classList.add('active');
+ });
+
+ // Cerrar el modal
+ closeModal.addEventListener('click', () => {
+   modal.classList.remove('active');
+ });
+
+ // Cerrar el modal al hacer clic fuera del contenido
+ modal.addEventListener('click', (e) => {
+   if (e.target === modal) {
+     modal.classList.remove('active');
+   }
+ });

@@ -103,6 +103,60 @@
               </div>
             </div>
         </div>
+        <!-- Botón para abrir el modal -->
+  <button id="openModal">Finalizar compra</button>
+
+  <!-- Estructura del modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content">
+      <div class="card w-75 mx-auto">
+        <div class="card-body">
+            <h2 class="card-title text-center">TRANSACCIÓN EXITOSA</h2>
+            <img class="img-fluid d-block mx-auto" src="exito.jpeg" alt="Transacción exitosa">
+            <p class="card-text">
+            <p><strong>Estado de transacción:</strong> <span id="estado-transaccion"></span></p>
+                <br>
+            <p><strong>Nombre del comercio:</strong> <span id="nombre-comercio"></span></p>
+                <br>
+            <p><strong>Fecha de pago:</strong> <span id="fecha-pago"></span></p>
+                <br>
+            <p><strong>Hora de pago:</strong> <span id="hora-pago"></span></p>
+                <br>
+            <p><strong>ID de transacción:</strong> <span id="id-transaccion"></span></p>
+                <br>
+            <p>Costo de envío:<span id="costo-envio"></span></p>
+                <br>
+            <p><strong>Concepto:</strong> <span id="concepto-1"></span></p>
+            <br>
+            <p><strong>Concepto:</strong> <span id="concepto-2"></span></p>
+            <br>
+            <p><strong>Concepto:</strong> <span id="concepto-3"></span></p>
+            <br>
+            <p><strong>Método de pago:</strong> <span id="metodo-de-pago"></span></p>
+            <br>
+            <p><strong>Costo subtotal:</strong> <span id="subtotal"></span></p>
+            <hr>
+            <p><strong>Total:</strong> <span id="total"></span></p>
+            <button id="finalizar-compra">Finaizar compra</button>
+            <button id="descargaPDF">Descargar PDF</button>
+            <hr>
+                <p class="lead text-center">
+                    <strong>¡Gracias por tu compra</strong>
+                </p>
+            </p>
+        </div>
+    </div>
+      <div class="card w-50">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
+          <a href="#" class="btn btn-primary">Button</a>
+        </div>
+      </div>
+
+      <button class="close-btn" id="closeModal">Cerrar</button>
+    </div>
+  </div>
     </section>
 
   </main>
