@@ -254,6 +254,8 @@
                         <li><strong>Titular:</strong> e-Market</li>
                         <li><strong>Referencia:</strong> Su nombre completo</li>
                       </ul>
+                      <input type="text" class="form-control" id="nro-transf"
+                        placeholder="Ingrese aquí el número de su transferencia">
                       <p>El envio será realizado una vez esté confirmada la transferencia.</p>
                     </div>
 
@@ -268,9 +270,23 @@
 
               <!-- Pestaña de Resumen -->
               <div class="tab-pane fade" id="resumen-tab">
-                <div class="resumen-compra">
-                  <button type="submit" class="btn btn-success">Finalizar Compra</button>
+                <div class="card-body">
+                  <p class="card-text">
+                    <strong>Nombre del comercio:</strong> <span id="nombre-comercio"></span>
+                    <br>
+                    <strong>Costo de envío:</strong> <span id="costo-envio"></span>
+                    <br>
+                    <strong>Tipo de envío:</strong> <span id="tipo-envio"></span>
+                    <br>
+                    <strong>Metodo de Pago:</strong> <span id="metodo-pago"></span>
+                    <br>
+                    <strong>Subtotal:</strong> <span id="subtotal"></span>
+                    <br>
+                    <strong>Total a pagar:</strong> <span id="total-pagar"></span>
+                    <br>
+                  </p>
                 </div>
+                <button type="submit" class="btn btn-success">Finalizar Compra</button>
               </div>
             </div>
           </div>
