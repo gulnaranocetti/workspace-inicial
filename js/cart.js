@@ -195,7 +195,7 @@ function updateCartCount() {
 }
 
 // Funcion para is-invalid
-function validarCampo(campo, condicion) {
+/*function validarCampo(campo, condicion) {
   if (condicion) {
     campo.classList.add("is-invalid");
     return false;
@@ -203,7 +203,21 @@ function validarCampo(campo, condicion) {
     campo.classList.remove("is-invalid");
     return true;
   }
+}*/
+function validarCampo(campo, condicion) {
+  const mensajeError = campo.nextElementSibling; // El mensaje de error está justo después del campo
+
+  if (condicion) {
+    campo.classList.add("is-invalid");
+    if (mensajeError) mensajeError.style.display = "block"; // Mostrar el mensaje de error
+    return false;
+  } else {
+    campo.classList.remove("is-invalid");
+    if (mensajeError) mensajeError.style.display = "none"; // Ocultar el mensaje de error
+    return true;
+  }
 }
+
 
 function validarFormulario() {
   let esValido = true;
@@ -239,13 +253,25 @@ function validarFormulario() {
   const metodoPagoTarjeta = document.getElementById("tarjeta-option");
   const metodoPagoTransferencia = document.getElementById("transferencia-option");
 
-  const paymentMethodContainer = document.getElementById("payment-method-container");
+ /* const paymentMethodContainer = document.getElementById("payment-method-container");
   if (!metodoPagoTarjeta.checked && !metodoPagoTransferencia.checked) {
     paymentMethodContainer.classList.add("is-invalid");
     esValido = false;
   } else {
     paymentMethodContainer.classList.remove("is-invalid");
-  }
+  }*/
+    const paymentMethodContainer = document.getElementById("payment-method-container");
+    const mensajeErrorPago = paymentMethodContainer.querySelector(".invalid-feedback");
+    
+    if (!metodoPagoTarjeta.checked && !metodoPagoTransferencia.checked) {
+      paymentMethodContainer.classList.add("is-invalid");
+      if (mensajeErrorPago) mensajeErrorPago.style.display = "block";
+      esValido = false;
+    } else {
+      paymentMethodContainer.classList.remove("is-invalid");
+      if (mensajeErrorPago) mensajeErrorPago.style.display = "none";
+    }
+    
 
   // 5- Validar Campos del Método de Pago Seleccionado
   if (metodoPagoTarjeta.checked) {
