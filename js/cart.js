@@ -132,7 +132,21 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
   }
 
+  const goToPago = document.getElementById("go-to-pago");
+  goToPago.addEventListener("click", () => {
+    const pagoTab = new bootstrap.Tab(document.querySelector('#pago-tab-link'));
+    pagoTab.show(); // Activa la pestaña "Pago"
+  });
+
+  // Botón para ir a la pestaña "Resumen"
+  const goToResumen = document.getElementById("go-to-resumen");
+  goToResumen.addEventListener("click", () => {
+    const resumenTab = new bootstrap.Tab(document.querySelector('#resumen-tab-link'));
+    resumenTab.show(); // Activa la pestaña "Resumen"
+  });
 });
+
+
 
 //funcion para actualizar el resumen de envio
 function updateResumenEnvio(cartItems){

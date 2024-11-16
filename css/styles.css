@@ -228,7 +228,7 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
-.checked {
+.checked,  {
   color: orange;
 }
 
@@ -541,11 +541,19 @@ body.active .text-body {
 .nav-pills .nav-link {
   color: #000; 
   background-color: transparent;
-  border-radius: 5px; 
+  border-color: transparent
 }
 
 .nav-pills .nav-link.active {
-  color: #fff; 
-  background-color: orange; 
+  color: orange;  
+  background-color: transparent;
   font-weight: bold; 
+  text-decoration: underline;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+#transferencia-form {
+  border-color: #fdc21c;
+  border-radius: 6%;
+}
+

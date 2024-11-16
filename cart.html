@@ -65,7 +65,7 @@
           <div class="col-md-12">
             <!-- Contenedor para las tabs -->
             <div class="tab-content mt-4">
-              <ul class="nav nav-pills">
+              <ul class="nav nav-pills" id="tab-navigation" role="tablist">
                 <li class="nav-item" role="presentation">
                   <a class="nav-link active" id="envio-tab-link" data-bs-toggle="pill" href="#envio-tab">Envío</a>
                 </li>
@@ -202,7 +202,7 @@
                           Seleccione un tipo de envío.
                       </div>
                       </div>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="pill" href="#pago-tab">Seguir a
+                      <button type="button" class="btn btn-warning w-100" id="go-to-pago">Seguir a
                         Pago</button>
                     </form>
                   </div>
@@ -210,10 +210,10 @@
               </div>
 
               <!-- Pestaña de Pago -->
-              <div class="tab-pane fade p-4" id="pago-tab">
+              <div class="tab-pane fade" id="pago-tab">
                 <!-- Selector de método de pago -->
                 <div class="mb-3 is-invalid" id="payment-method-container">
-                  <label class="form-label">Seleccione el método de pago</label>
+                  <label class="form-label p-3">Seleccione el método de pago</label>
                   <div class="row">
                     <!-- Opción Transferencia Bancaria -->
                     <div class="col-md-6">
@@ -223,6 +223,7 @@
                         <label class="form-check-label" for="transferencia-option">
                           <h5>Transferencia Bancaria</h5>
                         </label>
+                        <hr>
                       </div>
                     </div>
                     <!-- Opción Tarjeta -->
@@ -233,6 +234,7 @@
                         <label class="form-check-label" for="tarjeta-option">
                           <h5>Tarjeta</h5>
                         </label>
+                        <hr>
                       </div>
                       <div class="invalid-feedback">
                         Por favor, seleccione un método de pago.
@@ -243,16 +245,19 @@
                 <div class="row">
                   <div class="col-md-6">
                     <!-- Formulario de transferencia bancaria -->
-                    <div class="card" id="transferencia-form">
+                    <div class="card col-md-7 p-3 mx-auto" id="transferencia-form">
                       <div class="card-body">
                         <p class="card-text mb-3">
-                          Por favor realice la transferencia bancaria al siguiente número de cuenta:
+                          Le facilitamos los datos de la cuenta bancaria en la que deberá hacer el ingreso por el importe total de su pedido.
                         </p>
+                        <hr style="color: orange">
                         <ul class="list-unstyled">
-                          <li><strong>Banco:</strong> BROU</li>
-                          <li><strong>Número de cuenta:</strong> 1111 1111 1111</li>
-                          <li><strong>Titular:</strong> e-Market</li>
-                          <li><strong>Referencia:</strong> Su nombre completo</li>
+                          <li><strong class="txt-org">Beneficiario:</strong> e-Market</li>
+                          <li><strong class="txt-org">Banco:</strong> BROU</li>
+                          <li><strong class="txt-org">Número de cuenta:</strong></li>
+                          <li> 1111 1111 1111</li>
+                          <li><strong class="txt-org">Referencia:</strong> Su nombre completo.</li>
+                          <li><strong class="txt-org">Importe total:</strong></li>
                         </ul>
                         <input type="text" class="form-control is-invalid" id="nro-transf" placeholder="Ingrese aquí el número de su transacción">
                         <div class="invalid-feedback">
@@ -263,7 +268,7 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="card shadow-sm rounded orange">
+                    <div class="card shadow-sm resumen-compra orange col-md-8 mx-auto">
                       <div class="card-body">
                         <!-- Formulario de pago con tarjeta -->
                         <div id="tarjeta-form">
@@ -319,31 +324,45 @@
                   </div>
                   <!-- Botón de continuar -->
                   <div class="text-center mt-2">
-                    <button type="submit" class="btn btn-primary" href="#resumen-tab">Confirmar metodo de pago y continuar</button>
+                    <button id="go-to-resumen" class="btn btn-warning">Seguir a Resumen</button>
                   </div>
                 </div>
               
 
               <!-- Pestaña de Resumen -->
-              <div class="tab-pane fade show" id="resumen-tab">
-                <div class="card-body">
-                  <p class="card-text">
-                    <strong>Nombre del comercio:</strong> <span id="nombre-comercio">e-Mercado</span>
-                    <br>
-                    <strong>Costo de envío:</strong> <span id="costo-envio"></span>
-                    <br>
-                    <strong>Tipo de envío:</strong> <span id="tipo-envio"></span>
-                    <br>
-                    <strong>Metodo de Pago:</strong> <span id="metodo-pago"></span>
-                    <br>
-                    <strong>Subtotal:</strong> <span id="subtotal"></span>
-                    <br>
-                    <strong>Total a pagar:</strong> <span id="total-pagar"></span>
-                    <br>
-                  </p>
+              <div class="tab-pane fade" id="resumen-tab">
+                <div class="card border-1 shadow-sm col-md-6 mx-auto">
+                  <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0">Resumen de Compra</h5>
+                  </div>
+                  <div class="card-body">
+                    <div class="p-3">
+                      <p class="mb-2">
+                        <strong>Nombre del comercio:</strong> <span id="nombre-comercio">e-Mercado</span>
+                      </p>
+                      <p class="mb-2">
+                        <strong>Tipo de envío:</strong> <span id="tipo-envio"></span>
+                      </p>
+                      <p class="mb-2">
+                        <strong>Costo de envío:</strong> <span id="costo-envio"></span>
+                      </p>
+                      <p class="mb-2">
+                        <strong>Método de Pago:</strong> <span id="metodo-pago"></span>
+                      </p>
+                      <p class="mb-2">
+                        <strong>Subtotal:</strong> <span id="subtotal"></span>
+                      </p>
+                      <p class="mb-3">
+                        <strong>Total a pagar:</strong> <span id="total-pagar"></span>
+                      </p>
+                    </div>                    
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-danger">Finalizar Compra</button>
+                    </div>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-success">Finalizar Compra</button>
               </div>
+              
             </div>
           </div>
         </div>
