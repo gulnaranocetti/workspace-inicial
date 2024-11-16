@@ -2,12 +2,12 @@
 function groupCartItems(cartItems) {
   const groupedItems = {};
   cartItems.forEach(item => {
-      const productName = item.selectedproducts.name;
-      if (groupedItems[productName]) {
-        groupedItems[productName].quantity += item.quantity;
-      } else {
-        groupedItems[productName] = { ...item };
-      }
+    const productName = item.selectedproducts.name;
+    if (groupedItems[productName]) {
+      groupedItems[productName].quantity += item.quantity;
+    } else {
+      groupedItems[productName] = { ...item };
+    }
   });
   return Object.values(groupedItems);
 }
@@ -18,9 +18,9 @@ function showCartItems(cartItems) {
   let htmlContentToAppend = "";
 
   groupedCartItems.forEach((item, index) => {
-      const quantity = item.quantity || 1; // Cambio: Asigna 1 como valor predeterminado si quantity está undefined
-      const subtotal = item.selectedproducts.cost * quantity; // Calcula el subtotal por producto basado en la cantidad
-      htmlContentToAppend += `
+    const quantity = item.quantity || 1; // Cambio: Asigna 1 como valor predeterminado si quantity está undefined
+    const subtotal = item.selectedproducts.cost * quantity; // Calcula el subtotal por producto basado en la cantidad
+    htmlContentToAppend += `
       <div class="card padding m-3" style="border-radius: 15px; width: 100%;">
         <div class="row mb-4 d-flex justify-content-between align-items-center">
           <div class="col-2">
@@ -83,19 +83,26 @@ function updateSubtotal(index) {
   }
 }
 
+function costoTotal(cartItems){
+  let total = 0;
+  cartItems.forEach((item) => {
+    let subtotal = item.selectedproducts.cost * (item.quantity || 1); // Valor predeterminado para evitar NaN
+    if (item.selectedproducts.currency !== 'UYU') {
+      subtotal *= 40; // Conversión de moneda si no está en UYU
+    }
+    total += subtotal; // Acumula el subtotal al total general
+  });
+  return total;
+}
+
 // Función para calcular el total general
 function updateTotal(cartItems) {
-  let total = 0;
   let totalQuantity = cartItems.reduce((total, item) => total + (item.quantity || 1), 0); // Asegura que quantity tenga un valor predeterminado
-  cartItems.forEach((item) => {
-      let subtotal = item.selectedproducts.cost * (item.quantity || 1); // Valor predeterminado para evitar NaN
-      if (item.selectedproducts.currency !== 'UYU') {
-          subtotal *= 40; // Conversión de moneda si no está en UYU
-      }
-      total += subtotal; // Acumula el subtotal al total general
-  });
+  let total = costoTotal(cartItems);
+  document.getElementById("subtotal").innerText = `UYU ${total}`;
   document.getElementById("Total").innerText = `${total}`; // Muestra el total en UYU
   document.getElementById("suma-art").innerText = totalQuantity;
+  updateResumenEnvio(cartItems);
 }
 
 // Función para eliminar un producto del carrito
@@ -103,27 +110,81 @@ function borrarProducto(index) {
   let cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
   cartItems = groupCartItems(cartItems); // Agrupa los productos antes de eliminar
   if (index >= 0 && index < cartItems.length) {
-      cartItems.splice(index, 1);
-      localStorage.setItem("PurchasedItems", JSON.stringify(cartItems));
-      showCartItems(cartItems); // Actualizar la lista de productos después de eliminar
-      updateCartCount();
+    cartItems.splice(index, 1);
+    localStorage.setItem("PurchasedItems", JSON.stringify(cartItems));
+    showCartItems(cartItems); // Actualizar la lista de productos después de eliminar
+    updateCartCount();
   }
 }
 
 // Al cargar el documento, mostrar el carrito si hay productos guardados
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   updateCartCount();
   let cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
   if (cartItems.length > 0) {
-      showCartItems(cartItems); // Llama a showCartItems solo si hay productos guardados
+    showCartItems(cartItems); // Llama a showCartItems solo si hay productos guardados
+    updateResumenEnvio(cartItems);
   } else {
-      document.getElementById("prod-list-container").innerHTML = `
+    document.getElementById("prod-list-container").innerHTML = `
           <div class="alert alert-info text-center" role="alert">
               No hay productos en el carrito.
           </div>
       `;
   }
+
+  const goToPago = document.getElementById("go-to-pago");
+  goToPago.addEventListener("click", () => {
+    const pagoTab = new bootstrap.Tab(document.querySelector('#pago-tab-link'));
+    pagoTab.show(); // Activa la pestaña "Pago"
+  });
+
+  // Botón para ir a la pestaña "Resumen"
+  const goToResumen = document.getElementById("go-to-resumen");
+  goToResumen.addEventListener("click", () => {
+    const resumenTab = new bootstrap.Tab(document.querySelector('#resumen-tab-link'));
+    resumenTab.show(); // Activa la pestaña "Resumen"
+  });
 });
+
+
+
+//funcion para actualizar el resumen de envio
+function updateResumenEnvio(cartItems){
+    //resumen de envio
+    const selectEnvio = document.getElementById("opcionesEnvio");
+    const tipoEnvio = selectEnvio.options[selectEnvio.selectedIndex].text; // Obtén el texto del option seleccionado
+    const porcentajeEnvio = parseFloat(selectEnvio.value); // Obtén el valor (porcentaje de envío)
+  
+    // Calcula el costo de envío según el subtotal (reemplaza con tu subtotal real)
+    const subtotal = costoTotal(cartItems);
+    const costoEnvio = subtotal*porcentajeEnvio;
+    const totalPagar = costoEnvio + subtotal;
+    // Método de pago
+    const metodoPago = document.querySelector('input[name="payment-method"]:checked');
+    const metodoPagoTexto = metodoPago
+    ? (metodoPago.value === "transferencia" ? "Transferencia Bancaria" : "Tarjeta")
+    : "No seleccionado";
+  
+    // Muestra los valores en el resumen
+    document.getElementById("tipo-envio").innerText = tipoEnvio;
+    document.getElementById("costo-envio").innerText = `UYU ${costoEnvio.toFixed(2)}`;
+    document.getElementById("total-pagar").innerText = totalPagar;
+    document.getElementById("metodo-pago").innerText = metodoPagoTexto;
+    document.getElementById("subtotal").innerText = `UYU ${subtotal}`;
+}
+
+document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+  radio.addEventListener("change", function () {
+    const cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
+    updateResumenEnvio(cartItems); // Actualiza el resumen cuando cambie el método de pago
+  });
+});
+
+document.getElementById("opcionesEnvio").addEventListener("change", function () {
+  const cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
+  updateResumenEnvio(cartItems); // Llama a la función para actualizar el resumen
+});
+
 
 // Función para actualizar el contador del carrito sumando todas las cantidades
 function updateCartCount() {
@@ -132,3 +193,89 @@ function updateCartCount() {
   localStorage.setItem("cart-count", totalQuantity); // Guardar en localStorage
   document.getElementById("cart-count").innerText = totalQuantity; // Actualizar en el badge
 }
+
+// Funcion para is-invalid
+function validarCampo(campo, condicion) {
+  if (condicion) {
+    campo.classList.add("is-invalid");
+    return false;
+  } else {
+    campo.classList.remove("is-invalid");
+    return true;
+  }
+}
+
+function validarFormulario() {
+  let esValido = true;
+
+  //1- Validar campos de direccion
+  const departamento = document.getElementById("departamento");
+  const localidad = document.getElementById("localidad");
+  const calle = document.getElementById("calle");
+  const numeroDire = document.getElementById("numero-dire");
+  const esquina = document.getElementById("esquina");
+
+  //Validar si estan vacios
+  esValido &&= validarCampo(departamento, departamento.value === "");
+  esValido &&= validarCampo(localidad, localidad.value === "");
+  esValido &&= validarCampo(calle, calle.value === "");
+  esValido &&= validarCampo(numeroDire, numeroDire.value === "");
+  esValido &&= validarCampo(esquina, esquina.value === "");
+
+  //2- Validar Tipo de Envio
+  const opcionesEnvio = document.getElementById("opcionesEnvio");
+  esValido &&= validarCampo(opcionesEnvio, opcionesEnvio.value == "");
+
+  //3- Validar cantidad de productos
+  const cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
+  cartItems.forEach((item, index) => {
+    const quantityInput = document.getElementById(`quantity-${index}`);
+    const quantityValue = parseInt(quantityInput?.value, 10);
+    const isInvalidQuantity = isNaN(quantityValue) || quantityValue <= 0;
+    esValido &&= validarCampo(quantityInput, isInvalidQuantity);
+  });
+
+  // 4- Validar Selección del Método de Pago
+  const metodoPagoTarjeta = document.getElementById("tarjeta-option");
+  const metodoPagoTransferencia = document.getElementById("transferencia-option");
+
+  const paymentMethodContainer = document.getElementById("payment-method-container");
+  if (!metodoPagoTarjeta.checked && !metodoPagoTransferencia.checked) {
+    paymentMethodContainer.classList.add("is-invalid");
+    esValido = false;
+  } else {
+    paymentMethodContainer.classList.remove("is-invalid");
+  }
+
+  // 5- Validar Campos del Método de Pago Seleccionado
+  if (metodoPagoTarjeta.checked) {
+    const cardholderName = document.getElementById("cardholder-name");
+    const cardNumber = document.getElementById("card-number");
+    const expiryDate = document.getElementById("expiry-date");
+    const cvv = document.getElementById("cvv");
+
+    esValido &&= validarCampo(cardholderName, cardholderName.value === "");
+    esValido &&= validarCampo(cardNumber, cardNumber.value === "");
+    esValido &&= validarCampo(expiryDate, expiryDate.value === "");
+    esValido &&= validarCampo(cvv, cvv.value === "");
+  } else if (metodoPagoTransferencia.checked) {
+    const nroTransf = document.getElementById("nro-transf");
+    esValido &&= validarCampo(nroTransf, nroTransf.value === "");
+  }
+
+  // 6- Validar Checkbox de Términos y Condiciones
+  const terminosCheckbox = document.getElementById("terminos");
+  esValido &&= validarCampo(terminosCheckbox, !terminosCheckbox.checked);
+
+  return esValido; // Retorna true si todo es válido
+}
+
+document.getElementById("finalizar-compra").addEventListener("click", function (event) {
+  if (!validarFormulario()) {
+    event.preventDefault();
+    alert("Por favor, complete todos los campos requeridos.");
+  } else {
+    alert("¡Compra realizada con éxito!");
+    // Procesar la compra ficticia
+  }
+});
