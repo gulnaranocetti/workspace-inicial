@@ -194,7 +194,8 @@ function updateCartCount() {
   document.getElementById("cart-count").innerText = totalQuantity; // Actualizar en el badge
 }
 
-function validarCampo(campo, condicion) {
+// Función para validar un campo individual
+function validateField(campo, condicion) {
   const mensajeError = campo.nextElementSibling;
 
   if (condicion) {
@@ -208,19 +209,20 @@ function validarCampo(campo, condicion) {
   }
 }
 
-function validarFormulario() {
+// Función para validar el formulario completo
+function validateForm() {
   let esValido = true;
 
   // Validar campos de dirección
   const camposDireccion = ["departamento", "localidad", "calle", "numero-dire", "esquina"];
   camposDireccion.forEach((campoId) => {
     const campo = document.getElementById(campoId);
-    esValido = validarCampo(campo, campo.value.trim() === "") && esValido;
+    esValido = validateField(campo, campo.value.trim() === "") && esValido;
   });
 
   // Validar tipo de envío
   const opcionesEnvio = document.getElementById("opcionesEnvio");
-  esValido = validarCampo(opcionesEnvio, opcionesEnvio.value === "") && esValido;
+  esValido = validateField(opcionesEnvio, opcionesEnvio.value === "") && esValido;
 
   // Validar método de pago
   const metodoPagoSeleccionado = document.querySelector('input[name="payment-method"]:checked');
@@ -238,19 +240,20 @@ function validarFormulario() {
     if (metodoPagoSeleccionado.value === "tarjeta") {
       ["cardholder-name", "card-number", "expiry-date", "cvv"].forEach((campoId) => {
         const campo = document.getElementById(campoId);
-        esValido = validarCampo(campo, campo.value.trim() === "") && esValido;
+        esValido = validateField(campo, campo.value.trim() === "") && esValido;
       });
     } else if (metodoPagoSeleccionado.value === "transferencia") {
       const nroTransf = document.getElementById("nro-transf");
-      esValido = validarCampo(nroTransf, nroTransf.value.trim() === "") && esValido;
+      esValido = validateField(nroTransf, nroTransf.value.trim() === "") && esValido;
     }
   }
 
   return esValido;
 }
 
+// Agrega un evento al botón de finalizar compra
 document.getElementById("finalizar-compra").addEventListener("click", function (event) {
-  if (!validarFormulario()) {
+  if (!validateForm()) {
     event.preventDefault();
     alert("Por favor, complete todos los campos requeridos.");
   } else {
