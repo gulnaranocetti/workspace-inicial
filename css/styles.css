@@ -436,81 +436,75 @@ padding: 1%;
   border: solid 2px #fff;
 }
 
-body.active h2{
-background-color: #151e21;
-color: #cfcfcf;
-}
-body.active h4{
-  background-color: #151e21;
-  color: #cfcfcf;
-  }
-
 body.active {
   background-color: #151e21;
   color: #cfcfcf;
+
+  h2 {
+    background-color: #151e21;
+    color: #cfcfcf;
   }
 
-body.active .card-body{
-  background-color: #151e21;
-  color: #cfcfcf;
-  border-color: #cfcfcf;
-}
+  h4 {
+    background-color: #151e21;
+    color: #cfcfcf;
+  }
 
-body.active .col-md-6{
-  background-color: #151e21;
-  color: #cfcfcf;
-
-}
-
-body.active .bg-light {
-  background-color: #151e21 !important;
-  color: #fff !important;
-
-}
-
-body.active .row1{
-  background-color: #151e21;
-  color: #cfcfcf;
-
-}
-
-body.active .col-lg-3{
-  background-color: #151e21;
-  color: #cfcfcf;
-}
-
-body.active .img-thumbnail{
-  background-color: #151e21;
-  color: #cfcfcf;
-}
-
-body.active .card{
-  background-color: #151e21;
-  color: #cfcfcf;
-  border-color: #cfcfcf;
-  ;
-}
-
-body.active .text-center{
-  background-color: #151e21;
-}
-
-body.active .list-group-item {
-  background-color: #151e21;
+  .card-body {
+    background-color: #151e21;
     color: #cfcfcf;
     border-color: #cfcfcf;
+  }
+
+  .col-md-6 {
+    background-color: #151e21;
+    color: #cfcfcf;
+  }
+
+  .bg-light {
+    background-color: #151e21 !important;
+    color: #fff !important;
+  }
+
+  .row1 {
+    background-color: #151e21;
+    color: #cfcfcf;
+  }
+
+  .col-lg-3 {
+    background-color: #151e21;
+    color: #cfcfcf;
+  }
+
+  .img-thumbnail {
+    background-color: #151e21;
+    color: #cfcfcf;
+  }
+
+  .card {
+    background-color: #151e21;
+    color: #cfcfcf;
+    border-color: #cfcfcf;
+  }
+
+  .text-center {
+    background-color: #151e21;
+  }
+
+  .list-group-item {
+    background-color: #151e21;
+    color: #cfcfcf;
+    border-color: #cfcfcf;
+  }
+
+  #welcome-message {
+    background-color: #212529 !important;
+  }
+
+  .text-body {
+    color: #ffffff !important;
+  }
 }
-
-body.active #welcome-message{
-  background-color: #212529 !important;
-}
-
-body.active .text-body {
-  color: #ffffff !important;
-}
-
-
-
 /*TERMIAN ESTILOS DE DARKMODE*/
 
 .rounded-circle {
