@@ -21,18 +21,18 @@ function showCartItems(cartItems) {
     const quantity = item.quantity || 1; // Cambio: Asigna 1 como valor predeterminado si quantity está undefined
     const subtotal = item.selectedproducts.cost * quantity; // Calcula el subtotal por producto basado en la cantidad
     htmlContentToAppend += `
-      <div class="card padding m-3" style="border-radius: 15px; width: 100%;">
+      <div class="card padding" style="border-radius: 15px; width: 100%;">
         <div class="row mb-4 d-flex justify-content-between align-items-center">
-          <div class="col-12 col-sm-2">
+          <div class="col-12 col-lg-2">
             <img src="${item.selectedproducts.images[0]}" alt="${item.selectedproducts.description}" class="img-thumbnail">
           </div>
-          <div class="col-12 col-sm-2">
+          <div class="col-12 col-lg-2">
             <h6 class="mb-0">${item.selectedproducts.name}</h6>
           </div>
-          <div class="col-12 col-sm-2">
+          <div class="col-12 col-lg-2">
             <h6 class="mb-0">P/u: ${item.selectedproducts.currency} ${item.selectedproducts.cost}</h6>
           </div>
-          <div class="col-12 col-sm-2 d-flex justify-content-center justify-content-sm-start">
+          <div class="col-12 col-lg-3 d-flex justify-content-center justify-content-sm-start">
             <button class="btn btn-link px-2" onclick="updateQuantity(${index}, -1)">
               <i class="fas fa-minus"></i>
             </button>
@@ -42,10 +42,10 @@ function showCartItems(cartItems) {
               <i class="fas fa-plus"></i>
             </button>
           </div>
-          <div class="col-11 col-sm-3">
+          <div class="col-9 col-lg-2">
             <h6 class="mb-0" id="subtotal-${index}">Subtotal: ${item.selectedproducts.currency} ${subtotal}</h6>
           </div>
-          <div class="col-1 col-sm-1">
+          <div class="col-3 col-lg-1">
             <a href="#!" class="text-muted" onclick="borrarProducto(${index})"><i class="fas fa-times"></i></a>
           </div>
         </div>
