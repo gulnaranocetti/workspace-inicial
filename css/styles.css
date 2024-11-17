@@ -228,7 +228,7 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
-.checked,  {
+.checked {
   color: orange;
 }
 
@@ -555,5 +555,14 @@ body.active .text-body {
 #transferencia-form {
   border-color: #fdc21c;
   border-radius: 6%;
+}
+
+.invalid-feedback {
+  display: none;
+  color: red;
+  font-size: 0.9em;
+}
+.is-invalid + .invalid-feedback {
+  display: block;
 }
 
