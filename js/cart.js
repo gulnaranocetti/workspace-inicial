@@ -23,16 +23,16 @@ function showCartItems(cartItems) {
     htmlContentToAppend += `
       <div class="card padding m-3" style="border-radius: 15px; width: 100%;">
         <div class="row mb-4 d-flex justify-content-between align-items-center">
-          <div class="col-2">
+          <div class="col-12 col-sm-2">
             <img src="${item.selectedproducts.images[0]}" alt="${item.selectedproducts.description}" class="img-thumbnail">
           </div>
-          <div class="col-2">
+          <div class="col-12 col-sm-2">
             <h6 class="mb-0">${item.selectedproducts.name}</h6>
           </div>
-          <div class="col-2">
+          <div class="col-12 col-sm-2">
             <h6 class="mb-0">P/u: ${item.selectedproducts.currency} ${item.selectedproducts.cost}</h6>
           </div>
-          <div class="col-2 d-flex">
+          <div class="col-12 col-sm-2 d-flex justify-content-center justify-content-sm-start">
             <button class="btn btn-link px-2" onclick="updateQuantity(${index}, -1)">
               <i class="fas fa-minus"></i>
             </button>
@@ -42,10 +42,10 @@ function showCartItems(cartItems) {
               <i class="fas fa-plus"></i>
             </button>
           </div>
-          <div class="col-3">
+          <div class="col-11 col-sm-3">
             <h6 class="mb-0" id="subtotal-${index}">Subtotal: ${item.selectedproducts.currency} ${subtotal}</h6>
           </div>
-          <div class="col-1">
+          <div class="col-1 col-sm-1">
             <a href="#!" class="text-muted" onclick="borrarProducto(${index})"><i class="fas fa-times"></i></a>
           </div>
         </div>
@@ -194,13 +194,16 @@ function updateCartCount() {
   document.getElementById("cart-count").innerText = totalQuantity; // Actualizar en el badge
 }
 
-// Funcion para is-invalid
 function validarCampo(campo, condicion) {
+  const mensajeError = campo.nextElementSibling;
+
   if (condicion) {
     campo.classList.add("is-invalid");
+    if (mensajeError) mensajeError.style.display = "block";
     return false;
   } else {
     campo.classList.remove("is-invalid");
+    if (mensajeError) mensajeError.style.display = "none";
     return true;
   }
 }
@@ -208,66 +211,42 @@ function validarCampo(campo, condicion) {
 function validarFormulario() {
   let esValido = true;
 
-  //1- Validar campos de direccion
-  const departamento = document.getElementById("departamento");
-  const localidad = document.getElementById("localidad");
-  const calle = document.getElementById("calle");
-  const numeroDire = document.getElementById("numero-dire");
-  const esquina = document.getElementById("esquina");
-
-  //Validar si estan vacios
-  esValido &&= validarCampo(departamento, departamento.value === "");
-  esValido &&= validarCampo(localidad, localidad.value === "");
-  esValido &&= validarCampo(calle, calle.value === "");
-  esValido &&= validarCampo(numeroDire, numeroDire.value === "");
-  esValido &&= validarCampo(esquina, esquina.value === "");
-
-  //2- Validar Tipo de Envio
-  const opcionesEnvio = document.getElementById("opcionesEnvio");
-  esValido &&= validarCampo(opcionesEnvio, opcionesEnvio.value == "");
-
-  //3- Validar cantidad de productos
-  const cartItems = JSON.parse(localStorage.getItem("PurchasedItems")) || [];
-  cartItems.forEach((item, index) => {
-    const quantityInput = document.getElementById(`quantity-${index}`);
-    const quantityValue = parseInt(quantityInput?.value, 10);
-    const isInvalidQuantity = isNaN(quantityValue) || quantityValue <= 0;
-    esValido &&= validarCampo(quantityInput, isInvalidQuantity);
+  // Validar campos de dirección
+  const camposDireccion = ["departamento", "localidad", "calle", "numero-dire", "esquina"];
+  camposDireccion.forEach((campoId) => {
+    const campo = document.getElementById(campoId);
+    esValido = validarCampo(campo, campo.value.trim() === "") && esValido;
   });
 
-  // 4- Validar Selección del Método de Pago
-  const metodoPagoTarjeta = document.getElementById("tarjeta-option");
-  const metodoPagoTransferencia = document.getElementById("transferencia-option");
+  // Validar tipo de envío
+  const opcionesEnvio = document.getElementById("opcionesEnvio");
+  esValido = validarCampo(opcionesEnvio, opcionesEnvio.value === "") && esValido;
 
+  // Validar método de pago
+  const metodoPagoSeleccionado = document.querySelector('input[name="payment-method"]:checked');
   const paymentMethodContainer = document.getElementById("payment-method-container");
-  if (!metodoPagoTarjeta.checked && !metodoPagoTransferencia.checked) {
+  const mensajeErrorPago = paymentMethodContainer.querySelector(".invalid-feedback");
+
+  if (!metodoPagoSeleccionado) {
     paymentMethodContainer.classList.add("is-invalid");
+    mensajeErrorPago.style.display = "block";
     esValido = false;
   } else {
     paymentMethodContainer.classList.remove("is-invalid");
+    mensajeErrorPago.style.display = "none";
+
+    if (metodoPagoSeleccionado.value === "tarjeta") {
+      ["cardholder-name", "card-number", "expiry-date", "cvv"].forEach((campoId) => {
+        const campo = document.getElementById(campoId);
+        esValido = validarCampo(campo, campo.value.trim() === "") && esValido;
+      });
+    } else if (metodoPagoSeleccionado.value === "transferencia") {
+      const nroTransf = document.getElementById("nro-transf");
+      esValido = validarCampo(nroTransf, nroTransf.value.trim() === "") && esValido;
+    }
   }
 
-  // 5- Validar Campos del Método de Pago Seleccionado
-  if (metodoPagoTarjeta.checked) {
-    const cardholderName = document.getElementById("cardholder-name");
-    const cardNumber = document.getElementById("card-number");
-    const expiryDate = document.getElementById("expiry-date");
-    const cvv = document.getElementById("cvv");
-
-    esValido &&= validarCampo(cardholderName, cardholderName.value === "");
-    esValido &&= validarCampo(cardNumber, cardNumber.value === "");
-    esValido &&= validarCampo(expiryDate, expiryDate.value === "");
-    esValido &&= validarCampo(cvv, cvv.value === "");
-  } else if (metodoPagoTransferencia.checked) {
-    const nroTransf = document.getElementById("nro-transf");
-    esValido &&= validarCampo(nroTransf, nroTransf.value === "");
-  }
-
-  // 6- Validar Checkbox de Términos y Condiciones
-  const terminosCheckbox = document.getElementById("terminos");
-  esValido &&= validarCampo(terminosCheckbox, !terminosCheckbox.checked);
-
-  return esValido; // Retorna true si todo es válido
+  return esValido;
 }
 
 document.getElementById("finalizar-compra").addEventListener("click", function (event) {
@@ -276,6 +255,5 @@ document.getElementById("finalizar-compra").addEventListener("click", function (
     alert("Por favor, complete todos los campos requeridos.");
   } else {
     alert("¡Compra realizada con éxito!");
-    // Procesar la compra ficticia
   }
 });
