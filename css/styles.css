@@ -390,7 +390,7 @@ padding: 1%;
   width: 12%;
 }
 
-/*ESTILOS DE SWITCH*/
+/*ESTILOS DE DARKMODE*/
 
 .switch{
   width:60px;
@@ -509,6 +509,7 @@ body.active #welcome-message{
 body.active .text-body {
   color: #ffffff !important;
 }
+/*TERMINA ESTILOS DE DARKMODE*/
 
 .rounded-circle {
   padding: 15px;
