@@ -138,7 +138,8 @@
                     <form>
                       <div class="mb-3">
                         <label for="departamento">Departamento:</label>
-                        <select name="departamento" id="departamento" class="form-select dark is-invalid">
+                        <select name="departamento" id="departamento" class="form-select dark">
+                          <option value="" selected disabled>Seleccione un departamento</option>
                           <option value="artigas">Artigas</option>
                           <option value="canelones">Canelones</option>
                           <option value="cerro_largo">Cerro Largo</option>
@@ -161,8 +162,8 @@
                         </select>
                         <div class="invalid-feedback" style="display: none;">
                           Seleccione un departamento válido.
-                      </div>
-                      </div>
+                        </div>
+                      </div>                      
                       <div class="mb-3">
                         <input type="text" class="form-control dark is-invalid" id="localidad" placeholder="Localidad">
                         <div class="invalid-feedback" style="display: none;">
@@ -357,7 +358,7 @@
                       </p>
                     </div>                    
                     <div class="d-flex justify-content-center">
-                      <button type="submit" class="btn btn-danger">Finalizar Compra</button>
+                      <button type="submit" class="btn btn-danger" id="finalizar-compra">Finalizar Compra</button>
                     </div>
                   </div>
                 </div>
