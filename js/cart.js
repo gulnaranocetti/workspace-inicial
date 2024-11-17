@@ -222,7 +222,7 @@ function validarFormulario() {
   const opcionesEnvio = document.getElementById("opcionesEnvio");
   esValido = validarCampo(opcionesEnvio, opcionesEnvio.value === "") && esValido;
 
-  // Validar método de pago
+  
   const metodoPagoSeleccionado = document.querySelector('input[name="payment-method"]:checked');
   const paymentMethodContainer = document.getElementById("payment-method-container");
   const mensajeErrorPago = paymentMethodContainer.querySelector(".invalid-feedback");
