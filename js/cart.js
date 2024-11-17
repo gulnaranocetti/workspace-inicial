@@ -23,16 +23,16 @@ function showCartItems(cartItems) {
     htmlContentToAppend += `
       <div class="card padding m-3" style="border-radius: 15px; width: 100%;">
         <div class="row mb-4 d-flex justify-content-between align-items-center">
-          <div class="col-2">
+          <div class="col-12 col-sm-2">
             <img src="${item.selectedproducts.images[0]}" alt="${item.selectedproducts.description}" class="img-thumbnail">
           </div>
-          <div class="col-2">
+          <div class="col-12 col-sm-2">
             <h6 class="mb-0">${item.selectedproducts.name}</h6>
           </div>
-          <div class="col-2">
+          <div class="col-12 col-sm-2">
             <h6 class="mb-0">P/u: ${item.selectedproducts.currency} ${item.selectedproducts.cost}</h6>
           </div>
-          <div class="col-2 d-flex">
+          <div class="col-12 col-sm-2 d-flex justify-content-center justify-content-sm-start">
             <button class="btn btn-link px-2" onclick="updateQuantity(${index}, -1)">
               <i class="fas fa-minus"></i>
             </button>
@@ -42,10 +42,10 @@ function showCartItems(cartItems) {
               <i class="fas fa-plus"></i>
             </button>
           </div>
-          <div class="col-3">
+          <div class="col-11 col-sm-3">
             <h6 class="mb-0" id="subtotal-${index}">Subtotal: ${item.selectedproducts.currency} ${subtotal}</h6>
           </div>
-          <div class="col-1">
+          <div class="col-1 col-sm-1">
             <a href="#!" class="text-muted" onclick="borrarProducto(${index})"><i class="fas fa-times"></i></a>
           </div>
         </div>
@@ -222,7 +222,7 @@ function validarFormulario() {
   const opcionesEnvio = document.getElementById("opcionesEnvio");
   esValido = validarCampo(opcionesEnvio, opcionesEnvio.value === "") && esValido;
 
-  
+  // Validar método de pago
   const metodoPagoSeleccionado = document.querySelector('input[name="payment-method"]:checked');
   const paymentMethodContainer = document.getElementById("payment-method-container");
   const mensajeErrorPago = paymentMethodContainer.querySelector(".invalid-feedback");
