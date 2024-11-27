@@ -2,6 +2,10 @@ const express = require('express');
 const apiRoutes = require('./routes/apiRoutes'); // Importa las rutas
 const app = express();
 const PORT = 3000;
+const cors = require('cors');
+
+// Habilitar CORS
+app.use(cors());
 
 // Middleware para parsear JSON
 app.use(express.json());
