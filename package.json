@@ -1,15 +1,19 @@
 {
-  "name": "backend-project",
+  "name": "workspace-inicial",
   "version": "1.0.0",
+  "description": "workspace servidor",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gulnaranocetti/workspace-inicial.git"
+  },
+  "author": "Gulnara Nocetti",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "express": "^4.21.1"
-  }
+  "bugs": {
+    "url": "https://github.com/gulnaranocetti/workspace-inicial/issues"
+  },
+  "homepage": "https://github.com/gulnaranocetti/workspace-inicial#readme"
 }
