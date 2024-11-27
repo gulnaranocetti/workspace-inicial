@@ -69,7 +69,7 @@ router.get('/products-comments/:fileName', (req, res) => {
 // Ruta para información del carrito (cart.json en cart)
 router.get('/cart-info', (req, res) => {
     try {
-        res.sendFile(path.join(__dirname, '../data/cart/cart.json')); // Enviar archivo JSON
+        res.sendFile(path.join(__dirname, '../data/cart/buy.json')); // Enviar archivo JSON
     } catch (error) {
         console.error('Error al enviar el archivo del carrito:', error);
         res.status(500).json({ error: 'Error al enviar el archivo del carrito' });
@@ -79,7 +79,7 @@ router.get('/cart-info', (req, res) => {
 // Ruta para carritos de usuarios (user-cart.json en user-carts)
 router.get('/user-cart', (req, res) => {
     try {
-        res.sendFile(path.join(__dirname, '../data/user-carts/user-cart.json')); // Enviar archivo JSON
+        res.sendFile(path.join(__dirname, '../data/user-carts/25801.json')); // Enviar archivo JSON
     } catch (error) {
         console.error('Error al enviar el archivo del carrito del usuario:', error);
         res.status(500).json({ error: 'Error al enviar el archivo del carrito del usuario' });
@@ -89,7 +89,7 @@ router.get('/user-cart', (req, res) => {
 // Ruta para información de ventas (sell-info.json en sell)
 router.get('/sell-info', (req, res) => {
     try {
-        res.sendFile(path.join(__dirname, '../data/sell/sell-info.json')); // Enviar archivo JSON
+        res.sendFile(path.join(__dirname, '../data/sell/publish.json')); // Enviar archivo JSON
     } catch (error) {
         console.error('Error al enviar el archivo de ventas:', error);
         res.status(500).json({ error: 'Error al enviar el archivo de ventas' });
