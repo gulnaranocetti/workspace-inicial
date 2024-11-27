@@ -48,12 +48,21 @@ router.get('/products/:fileName', (req, res) => {
 });
 
 // Ruta para comentarios de productos (comments.json en products-comments)
-router.get('/products-comments', (req, res) => {
+router.get('/products-comments/:fileName', (req, res) => {
     try {
-        res.sendFile(path.join(__dirname, '../data/products-comments/comments.json')); // Enviar archivo JSON
+        const fileName = req.params.fileName; // Captura el nombre del archivo de la URL
+        const filePath = path.join(__dirname, '../data/products-comments', fileName); // Construye la ruta completa
+
+        console.log('Ruta construida:', filePath); // Depuración: imprime la ruta construida
+
+        if (fs.existsSync(filePath)) { // Verifica si el archivo existe
+            res.sendFile(filePath); // Envía el archivo encontrado
+        } else {
+            res.status(404).json({ error: `Archivo ${fileName} no encontrado` }); // Error si no existe
+        }
     } catch (error) {
-        console.error('Error al enviar el archivo de comentarios de productos:', error);
-        res.status(500).json({ error: 'Error al enviar el archivo de comentarios de productos' });
+        console.error('Error al enviar el archivo:', error);
+        res.status(500).json({ error: 'Error al enviar el archivo' });
     }
 });
 
