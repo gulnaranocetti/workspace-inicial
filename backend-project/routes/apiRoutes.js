@@ -19,32 +19,31 @@ router.get('/categories', (req, res) => {
 });
 
 // Ruta para productos (products.json en cats-products)
-router.get('/cats-products', (req, res) => {
+router.get('/cats-products/:fileName', (req, res) => {
     try {
-        const directoryPath = path.join(__dirname, '../data/cats-products'); // Ruta de la carpeta
-        fs.readdir(directoryPath, (err, files) => {
-            if (err) {
-                console.error('Error al leer la carpeta cats-products:', err);
-                res.status(500).json({ error: 'Error al leer la carpeta cats-products' });
-                return;
-            }
-
-            // Envía la lista de archivos como respuesta
-            res.json(files); // Devuelve un array con los nombres de los archivos en la carpeta
-        });
+        const filePath = path.join(__dirname, '../data/cats-products', req.params.fileName);
+        res.sendFile(filePath);
     } catch (error) {
-        console.error('Error al enviar la lista de archivos de cats-products:', error);
-        res.status(500).json({ error: 'Error al enviar la lista de archivos de cats-products' });
+        console.error('Error al enviar el archivo específico de cats-products:', error);
+        res.status(500).json({ error: 'Error al enviar el archivo específico de cats-products' });
     }
 });
 
-// Ruta para información de productos (product-info.json en products)
-router.get('/product-info', (req, res) => {
+router.get('/products/:fileName', (req, res) => {
     try {
-        res.sendFile(path.join(__dirname, '../data/products/product-info.json')); // Enviar archivo JSON
+        const fileName = req.params.fileName; // Captura el nombre del archivo de la URL
+        const filePath = path.join(__dirname, '../data/products', fileName); // Construye la ruta completa
+
+        console.log('Ruta construida:', filePath); // Depuración: imprime la ruta construida
+
+        if (fs.existsSync(filePath)) { // Verifica si el archivo existe
+            res.sendFile(filePath); // Envía el archivo encontrado
+        } else {
+            res.status(404).json({ error: `Archivo ${fileName} no encontrado` }); // Error si no existe
+        }
     } catch (error) {
-        console.error('Error al enviar el archivo de información del producto:', error);
-        res.status(500).json({ error: 'Error al enviar el archivo de información del producto' });
+        console.error('Error al enviar el archivo:', error);
+        res.status(500).json({ error: 'Error al enviar el archivo' });
     }
 });
 
