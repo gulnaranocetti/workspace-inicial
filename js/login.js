@@ -15,7 +15,18 @@ document.getElementById("button").addEventListener("click", function() {
     localStorage.setItem("userLoggedIn", true); // Guardar la sesión como iniciada 
     localStorage.setItem("username", usuario);
     // Redirigir a la página principal
-    window.location.href = "index.html";
+    fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username: usuario, password })
+        }).then(response => {return response.json()})
+        .then(response => {
+            localStorage.setItem("token", response.token);
+            window.location.href = "index.html";
+        })
+    
 })
 
 document.addEventListener("DOMContentLoaded", function(){

@@ -2,12 +2,46 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs'); // Para leer archivos JSON
 const router = express.Router();
+const jwt = require ('jsonwebtoken');
+const secret_key = 'estamosdespegadas';
+const token_expiration= '60m';
+
+
+router.post("/login", (req, res) => {
+    const { username, password } = req.body;
+
+    if (username === "admin" && password === "admin") {
+        const token = jwt.sign({ username }, secret_key, {expiresIn : token_expiration});
+        res.status(200).json({ token });
+    } else {
+        res.status(401).json({ message: "Usuario y/o contraseña incorrecto." });
+    }
+});
+
+const authenticateToken = (req, res, next) => {
+    const token = req.headers['authorization']; // Captura el token del header 'authorization'
+
+    if (!token) {
+        return res.status(401).json({ message: 'Token no proporcionado' });
+    }
+
+    // Verificar el token
+    jwt.verify(token, secret_key, (err, user) => { // Cambié JWT_SECRET por secret_key
+        if (err) {
+            return res.status(403).json({ message: 'Token inválido o expirado' });
+        }
+        req.user = user; // Agrega la información del usuario a la solicitud
+        next(); // Continua con la solicitud
+    });
+};
+
+
 
 // Imprime la ruta absoluta de cat.json para depuración
 console.log('Ruta absoluta de cat.json:', path.join(__dirname, '../data/cats/cat.json'));
 
 // Ruta para categorías (cat.json)
-router.get('/categories', (req, res) => {
+router.get('/categories', authenticateToken, (req, res) => {
     try {
         const categoriesPath = path.join(__dirname, '../data/cats/cat.json'); // Ruta absoluta a cat.json
         const categories = JSON.parse(fs.readFileSync(categoriesPath, 'utf-8')); // Leer y parsear JSON
@@ -19,7 +53,7 @@ router.get('/categories', (req, res) => {
 });
 
 // Ruta para productos (products.json en cats-products)
-router.get('/cats-products/:fileName', (req, res) => {
+router.get('/cats-products/:fileName', authenticateToken, (req, res) => {
     try {
         const filePath = path.join(__dirname, '../data/cats-products', req.params.fileName);
         res.sendFile(filePath);
@@ -29,7 +63,7 @@ router.get('/cats-products/:fileName', (req, res) => {
     }
 });
 
-router.get('/products/:fileName', (req, res) => {
+router.get('/products/:fileName', authenticateToken, (req, res) => {
     try {
         const fileName = req.params.fileName; // Captura el nombre del archivo de la URL
         const filePath = path.join(__dirname, '../data/products', fileName); // Construye la ruta completa
@@ -48,7 +82,7 @@ router.get('/products/:fileName', (req, res) => {
 });
 
 // Ruta para comentarios de productos (comments.json en products-comments)
-router.get('/products-comments/:fileName', (req, res) => {
+router.get('/products-comments/:fileName', authenticateToken, (req, res) => {
     try {
         const fileName = req.params.fileName; // Captura el nombre del archivo de la URL
         const filePath = path.join(__dirname, '../data/products-comments', fileName); // Construye la ruta completa
@@ -67,7 +101,7 @@ router.get('/products-comments/:fileName', (req, res) => {
 });
 
 // Ruta para información del carrito (cart.json en cart)
-router.get('/cart-info', (req, res) => {
+router.get('/cart-info', authenticateToken, (req, res) => {
     try {
         res.sendFile(path.join(__dirname, '../data/cart/buy.json')); // Enviar archivo JSON
     } catch (error) {
@@ -77,7 +111,7 @@ router.get('/cart-info', (req, res) => {
 });
 
 // Ruta para carritos de usuarios (user-cart.json en user-carts)
-router.get('/user-cart', (req, res) => {
+router.get('/user-cart', authenticateToken, (req, res) => {
     try {
         res.sendFile(path.join(__dirname, '../data/user-carts/25801.json')); // Enviar archivo JSON
     } catch (error) {
@@ -87,7 +121,7 @@ router.get('/user-cart', (req, res) => {
 });
 
 // Ruta para información de ventas (sell-info.json en sell)
-router.get('/sell-info', (req, res) => {
+router.get('/sell-info', authenticateToken, (req, res) => {
     try {
         res.sendFile(path.join(__dirname, '../data/sell/publish.json')); // Enviar archivo JSON
     } catch (error) {
